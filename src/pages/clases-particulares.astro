@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import ParallaxSection from '../components/ParallaxSection.astro';
+import HojasSVG from '../components/HojasSVG.astro';
+
+const servicios = [
+  { icon: '👥', title: 'Grupos reducidos', description: 'Clases con pocos alumnos para garantizar la atención individualizada que cada estudiante necesita.' },
+  { icon: '🎓', title: 'Profesores especializados', description: 'Equipo docente con formación específica en cada materia y en técnicas de apoyo al aprendizaje.' },
+  { icon: '🌍', title: 'Clases de idiomas', description: 'Inglés, francés y otros idiomas con metodología comunicativa y orientada a los exámenes oficiales.' },
+  { icon: '📐', title: 'Todas las materias', description: 'Desde matemáticas y lengua hasta ciencias sociales, física o química. Cubrimos todo el currículo.' },
+  { icon: '🔬', title: 'Seguimiento psicopedagógico', description: 'Control continuo del proceso de aprendizaje para detectar dificultades y adaptar la metodología.' },
+  { icon: '📋', title: 'Preparación de pruebas', description: 'Entrenamiento específico para exámenes, selectividad, oposiciones y pruebas de acceso.' },
+  { icon: '🏠', title: 'Clases a domicilio', description: 'El profesor se desplaza al domicilio para mayor comodidad y en un entorno familiar.' },
+  { icon: '🎒', title: 'Todos los niveles', description: 'Primaria, ESO, Bachillerato, universidad y adultos. Nunca es tarde para aprender.' },
+];
+---
+
+<Layout
+  title="Clases Particulares"
+  description="Clases particulares en educa2 — Refuerzo escolar con profesores especializados, grupos reducidos y seguimiento psicopedagógico en Jerez de la Frontera y Puerto Real."
+>
+
+  <!-- ═══════════════════════════════════════════
+       HERO PARALLAX
+  ═══════════════════════════════════════════ -->
+  <ParallaxSection id="clases-hero" bgColor="#fff0f0" parallaxIntensity={0.35} className="min-h-[60vh] flex items-center py-32 px-4">
+    <HojasSVG />
+    <div class="max-w-3xl mx-auto text-center relative z-10 pt-8">
+      <p class="inline-block bg-burdeos/10 text-burdeos font-bold text-sm px-4 py-1.5 rounded-full mb-5">
+        Refuerzo escolar personalizado
+      </p>
+      <h1 class="font-display text-5xl md:text-7xl font-black text-gris mb-5 leading-tight">
+        Aprender <span style="color:#b03030;">a tu ritmo</span>
+      </h1>
+      <p class="text-gris-claro text-xl max-w-xl mx-auto leading-relaxed">
+        Grupos reducidos, profesores especializados y un seguimiento continuo para que cada alumno alcance su máximo potencial.
+      </p>
+    </div>
+  </ParallaxSection>
+
+  <!-- ═══════════════════════════════════════════
+       8 SERVICIOS
+  ═══════════════════════════════════════════ -->
+  <section class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="text-burdeos font-bold text-sm tracking-widest uppercase mb-2">¿Qué ofrecemos?</p>
+        <h2 class="font-display text-4xl font-black text-gris mb-4">Todo lo que necesitas</h2>
+        <p class="text-gris-claro max-w-xl mx-auto">Ocho pilares que hacen de educa2 mucho más que una academia de refuerzo escolar.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {servicios.map(s => (
+          <ServiceCard
+            title={s.title}
+            description={s.description}
+            icon={s.icon}
+            accent="burdeos"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       POR QUÉ EDUCA2 — Parallax destacado
+  ═══════════════════════════════════════════ -->
+  <ParallaxSection id="clases-diferencial" bgColor="#fff5f5" parallaxIntensity={0.25} className="py-20 px-4">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+
+        <!-- Stats lado izquierdo -->
+        <div class="grid grid-cols-2 gap-5">
+          {[
+            { num: '+15', label: 'años de experiencia' },
+            { num: '2', label: 'centros en Cádiz' },
+            { num: '< 6', label: 'alumnos por grupo' },
+            { num: '100%', label: 'seguimiento familiar' },
+          ].map(stat => (
+            <div class="service-card bg-white rounded-2xl p-5 text-center shadow-sm border border-burdeos/10 opacity-0 translate-y-6">
+              <div class="font-display text-4xl font-black mb-1" style="color:#b03030;">{stat.num}</div>
+              <p class="text-gris-claro text-sm font-semibold">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <!-- Texto lado derecho -->
+        <div>
+          <p class="text-burdeos font-bold text-sm tracking-widest uppercase mb-3">¿Por qué educa2?</p>
+          <h2 class="font-display text-4xl font-black text-gris mb-5 leading-tight">
+            No somos solo una academia
+          </h2>
+          <p class="text-gris-claro leading-relaxed mb-4">
+            En educa2 combinamos el refuerzo académico con el apoyo psicopedagógico. Nuestros profesores no solo enseñan contenidos: detectan cómo aprende cada alumno y adaptan su metodología.
+          </p>
+          <p class="text-gris-claro leading-relaxed mb-7">
+            Trabajamos en coordinación con familias y colegios para garantizar una evolución real y sostenida en el tiempo.
+          </p>
+          <a href="tel:956062004" class="inline-flex items-center gap-2 bg-burdeos text-white font-bold px-6 py-3 rounded-full hover:bg-burdeos/80 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+            📞 Consulta sin compromiso
+          </a>
+        </div>
+      </div>
+    </div>
+  </ParallaxSection>
+
+  <!-- ═══════════════════════════════════════════
+       CTA
+  ═══════════════════════════════════════════ -->
+  <section class="py-16 px-4 bg-white text-center">
+    <div class="max-w-xl mx-auto">
+      <h2 class="font-display text-3xl font-black text-gris mb-4">¿Necesitas refuerzo escolar?</h2>
+      <p class="text-gris-claro mb-8">Cuéntanos la situación de tu hijo y te proponemos el plan más adecuado.</p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="tel:956062004" class="bg-burdeos text-white font-bold px-8 py-3 rounded-full hover:bg-burdeos/80 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+          📞 Llamar ahora
+        </a>
+        <a href="/psicopedagogia" class="border-2 border-burdeos text-burdeos font-bold px-8 py-3 rounded-full hover:bg-burdeos hover:text-white transition-all duration-200">
+          Ver Psicopedagogía
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

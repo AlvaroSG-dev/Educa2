@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ParallaxSection from '../components/ParallaxSection.astro';
+import HojasSVG from '../components/HojasSVG.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+---
+
+<Layout
+  title="Atención Psicopedagógica"
+  description="Servicio de atención psicopedagógica en educa2 — Evaluación, diagnóstico e intervención en dificultades del aprendizaje en Jerez de la Frontera y Puerto Real."
+>
+
+  <!-- HERO -->
+  <ParallaxSection id="psico-hero" bgColor="#eaf4e0" parallaxIntensity={0.35} className="min-h-[55vh] flex items-center py-32 px-4">
+    <HojasSVG />
+    <div class="max-w-3xl mx-auto text-center relative z-10 pt-8">
+      <p class="inline-block bg-verde/20 text-verde-oscuro font-bold text-sm px-4 py-1.5 rounded-full mb-5">
+        Intervención educativa
+      </p>
+      <h1 class="font-display text-5xl md:text-6xl font-black text-gris mb-5 leading-tight">
+        Atención <span class="text-verde">Psicopedagógica</span>
+      </h1>
+      <p class="text-gris-claro text-xl max-w-xl mx-auto leading-relaxed">
+        Detectamos, evaluamos e intervenimos en las dificultades de aprendizaje para que cada niño pueda desarrollar todo su potencial.
+      </p>
+    </div>
+  </ParallaxSection>
+
+  <!-- SERVICIOS -->
+  <section class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="text-verde font-bold text-sm tracking-widest uppercase mb-2">Áreas de trabajo</p>
+        <h2 class="font-display text-4xl font-black text-gris mb-4">¿Qué abarcamos?</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <ServiceCard icon="🧩" title="Dificultades de aprendizaje" description="Dislexia, discalculia, disgrafía y otros trastornos específicos del aprendizaje." accent="verde" />
+        <ServiceCard icon="⚡" title="TDAH" description="Evaluación y orientación para niños con déficit de atención e hiperactividad." accent="verde" />
+        <ServiceCard icon="🌟" title="Altas capacidades" description="Detección e intervención en niños con capacidades superiores a la media." accent="verde" />
+        <ServiceCard icon="📊" title="Evaluación psicológica" description="Informe psicopedagógico completo con orientaciones para familia y colegio." accent="verde" />
+        <ServiceCard icon="🎯" title="Orientación escolar" description="Asesoramiento sobre itinerarios académicos y decisiones educativas." accent="verde" />
+        <ServiceCard icon="👨‍👩‍👧" title="Orientación familiar" description="Pautas y herramientas para que las familias acompañen mejor a sus hijos en casa." accent="verde" />
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO — Parallax -->
+  <ParallaxSection id="psico-proceso" bgColor="#eaf4e0" parallaxIntensity={0.2} className="py-20 px-4">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-4xl font-black text-gris mb-4">Cómo trabajamos</h2>
+        <p class="text-gris-claro max-w-xl mx-auto">Un proceso claro, transparente y centrado en el alumno y su familia.</p>
+      </div>
+      <div class="grid md:grid-cols-4 gap-6">
+        {[
+          { num: '01', icon: '🔎', title: 'Primera consulta', desc: 'Recogemos información sobre la situación del alumno y las preocupaciones de la familia.' },
+          { num: '02', icon: '📋', title: 'Evaluación', desc: 'Aplicamos pruebas estandarizadas y observación directa para obtener un diagnóstico preciso.' },
+          { num: '03', icon: '🗺️', title: 'Plan de intervención', desc: 'Diseñamos un plan personalizado con objetivos claros y medibles.' },
+          { num: '04', icon: '📈', title: 'Seguimiento', desc: 'Revisamos el progreso periódicamente e informamos a la familia con transparencia.' },
+        ].map(step => (
+          <div class="service-card text-center bg-white/80 rounded-2xl p-5 border border-verde/20 opacity-0 translate-y-6">
+            <div class="font-display text-4xl font-black mb-1 text-verde opacity-30">{step.num}</div>
+            <div class="text-3xl mb-3">{step.icon}</div>
+            <h3 class="font-bold text-gris mb-2">{step.title}</h3>
+            <p class="text-gris-claro text-sm leading-relaxed">{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </ParallaxSection>
+
+  <!-- CTA -->
+  <section class="py-16 px-4 bg-white text-center">
+    <div class="max-w-xl mx-auto">
+      <h2 class="font-display text-3xl font-black text-gris mb-4">¿Tienes dudas sobre tu hijo?</h2>
+      <p class="text-gris-claro mb-8">Una consulta inicial no compromete a nada y puede marcar el inicio de un gran cambio.</p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="tel:956062004" class="bg-verde text-white font-bold px-8 py-3 rounded-full hover:bg-verde-oscuro transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+          📞 Pedir cita
+        </a>
+        <a href="/logopedia" class="border-2 border-verde text-verde font-bold px-8 py-3 rounded-full hover:bg-verde hover:text-white transition-all duration-200">
+          Ver Logopedia
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

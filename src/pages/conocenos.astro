@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ParallaxSection from '../components/ParallaxSection.astro';
+import HojasSVG from '../components/HojasSVG.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+---
+
+<Layout
+  title="Conócenos"
+  description="Conoce educa2, centro psicopedagógico en Jerez de la Frontera y Puerto Real. Más de 15 años acompañando a familias en el desarrollo educativo de sus hijos."
+>
+
+  <!-- HERO -->
+  <ParallaxSection id="conocenos-hero" bgColor="#e8f5d0" parallaxIntensity={0.3} className="min-h-[55vh] flex items-center py-32 px-4">
+    <HojasSVG />
+    <div class="max-w-3xl mx-auto text-center relative z-10 pt-8">
+      <p class="inline-block bg-verde/20 text-verde-oscuro font-bold text-sm px-4 py-1.5 rounded-full mb-5">
+        Centro Psicopedagógico
+      </p>
+      <h1 class="font-display text-5xl md:text-6xl font-black text-gris mb-5 leading-tight">
+        Quiénes <span class="text-verde">somos</span>
+      </h1>
+      <p class="text-gris-claro text-xl max-w-xl mx-auto leading-relaxed">
+        Un equipo de profesionales comprometido con el desarrollo educativo y comunicativo de cada niño y joven que pasa por nuestras aulas.
+      </p>
+    </div>
+  </ParallaxSection>
+
+  <!-- MISIÓN -->
+  <section class="py-20 px-4 bg-white">
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="text-verde font-bold text-sm tracking-widest uppercase mb-3">Nuestra misión</p>
+        <h2 class="font-display text-4xl font-black text-gris mb-5 leading-tight">
+          La tranquilidad de saber que tu hijo va bien
+        </h2>
+        <p class="text-gris-claro leading-relaxed mb-4">
+          En educa2 creemos que cada niño tiene un ritmo de aprendizaje propio y que el entorno adecuado marca la diferencia. Trabajamos con familias, colegios y especialistas para ofrecer una respuesta integral.
+        </p>
+        <p class="text-gris-claro leading-relaxed">
+          Llevamos más de 15 años en Jerez de la Frontera y Puerto Real, acompañando a cientos de familias con un equipo cercano, formado y en constante actualización.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <ServiceCard icon="❤️" title="Trato cercano" description="Cada familia recibe atención personalizada desde el primer contacto." accent="verde" />
+        <ServiceCard icon="🔬" title="Rigor profesional" description="Métodos avalados por la evidencia científica y actualizados." accent="verde" />
+        <ServiceCard icon="🤝" title="Coordinación" description="Trabajamos en red con colegios, familias y otros especialistas." accent="verde" />
+        <ServiceCard icon="📈" title="Seguimiento real" description="Informamos a las familias del progreso de forma continua." accent="verde" />
+      </div>
+    </div>
+  </section>
+
+  <!-- VALORES — Parallax -->
+  <ParallaxSection id="conocenos-valores" bgColor="#e8f5d0" parallaxIntensity={0.2} className="py-20 px-4">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="font-display text-4xl font-black text-gris mb-12">Nuestros valores</h2>
+      <div class="grid md:grid-cols-3 gap-7">
+        {[
+          { icon: '🌱', title: 'Crecimiento', desc: 'Cada alumno tiene potencial. Nuestra labor es ayudarle a descubrirlo.' },
+          { icon: '🔍', title: 'Individualización', desc: 'No hay dos casos iguales. Adaptamos cada intervención a la persona.' },
+          { icon: '🏡', title: 'Familia', desc: 'La familia es parte del equipo. La implicamos en todo el proceso.' },
+        ].map(v => (
+          <div class="service-card bg-white/80 rounded-2xl p-7 text-center border border-verde/20 opacity-0 translate-y-6">
+            <div class="text-4xl mb-4">{v.icon}</div>
+            <h3 class="font-bold text-gris text-xl mb-2">{v.title}</h3>
+            <p class="text-gris-claro text-sm leading-relaxed">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </ParallaxSection>
+
+  <!-- SEDES CTA -->
+  <section class="py-16 px-4 bg-white text-center">
+    <div class="max-w-xl mx-auto">
+      <h2 class="font-display text-3xl font-black text-gris mb-4">Visítanos</h2>
+      <p class="text-gris-claro mb-8">Dos centros a tu disposición en la provincia de Cádiz.</p>
+      <a href="tel:956062004" class="inline-flex items-center gap-2 bg-verde text-white font-bold px-8 py-3 rounded-full hover:bg-verde-oscuro transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+        📞 956 06 2004
+      </a>
+    </div>
+  </section>
+
+</Layout>

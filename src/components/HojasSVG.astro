@@ -1,0 +1,57 @@
+---
+interface Props {
+  count?: number;
+  className?: string;
+}
+const { count = 8, className = '' } = Astro.props;
+---
+
+<div class={`hojas-container pointer-events-none absolute inset-0 overflow-hidden ${className}`} aria-hidden="true">
+  <!-- Hoja 1 -->
+  <svg class="hoja absolute animate-float opacity-30" style="top:8%; left:5%; width:48px; animation-delay:0s;" viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M30 5 C50 15, 58 35, 50 55 C42 72, 20 75, 12 60 C4 45, 8 20, 30 5Z" fill="#8fbc4e"/>
+    <path d="M30 5 C30 5, 30 75, 30 75" stroke="#5a8a1f" stroke-width="1.5" opacity="0.5"/>
+  </svg>
+
+  <!-- Hoja 2 -->
+  <svg class="hoja absolute animate-float-slow opacity-20" style="top:15%; right:8%; width:64px; animation-delay:1.5s;" viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M30 5 C50 15, 58 35, 50 55 C42 72, 20 75, 12 60 C4 45, 8 20, 30 5Z" fill="#a8c96e"/>
+    <path d="M30 5 C30 5, 30 75, 30 75" stroke="#5a8a1f" stroke-width="1.5" opacity="0.5"/>
+  </svg>
+
+  <!-- Hoja 3 -->
+  <svg class="hoja absolute animate-float opacity-25" style="top:45%; left:2%; width:36px; animation-delay:2s;" viewBox="0 0 60 80" fill="none">
+    <path d="M30 5 C50 15, 58 35, 50 55 C42 72, 20 75, 12 60 C4 45, 8 20, 30 5Z" fill="#8fbc4e"/>
+    <path d="M30 5 C30 5, 30 75, 30 75" stroke="#5a8a1f" stroke-width="1.5" opacity="0.5"/>
+  </svg>
+
+  <!-- Hoja 4 -->
+  <svg class="hoja absolute animate-float-slow opacity-20" style="top:60%; right:4%; width:56px; animation-delay:0.8s;" viewBox="0 0 60 80" fill="none">
+    <path d="M30 5 C50 15, 58 35, 50 55 C42 72, 20 75, 12 60 C4 45, 8 20, 30 5Z" fill="#a8c96e"/>
+    <path d="M30 5 C30 5, 30 75, 30 75" stroke="#5a8a1f" stroke-width="1.5" opacity="0.4"/>
+  </svg>
+
+  <!-- Hoja 5 -->
+  <svg class="hoja absolute animate-float opacity-15" style="top:30%; left:88%; width:44px; animation-delay:3s;" viewBox="0 0 60 80" fill="none">
+    <path d="M30 5 C50 15, 58 35, 50 55 C42 72, 20 75, 12 60 C4 45, 8 20, 30 5Z" fill="#8fbc4e"/>
+    <path d="M30 5 C30 5, 30 75, 30 75" stroke="#5a8a1f" stroke-width="1.5" opacity="0.5"/>
+  </svg>
+
+  <!-- Hoja 6 -->
+  <svg class="hoja absolute animate-float-slow opacity-25" style="top:75%; left:15%; width:40px; animation-delay:1s;" viewBox="0 0 60 80" fill="none">
+    <path d="M30 5 C50 15, 58 35, 50 55 C42 72, 20 75, 12 60 C4 45, 8 20, 30 5Z" fill="#a8c96e"/>
+    <path d="M30 5 C30 5, 30 75, 30 75" stroke="#5a8a1f" stroke-width="1.5" opacity="0.4"/>
+  </svg>
+
+  <!-- Hoja 7 -->
+  <svg class="hoja absolute animate-float opacity-20" style="top:5%; left:50%; width:52px; animation-delay:2.5s;" viewBox="0 0 60 80" fill="none">
+    <path d="M30 5 C50 15, 58 35, 50 55 C42 72, 20 75, 12 60 C4 45, 8 20, 30 5Z" fill="#8fbc4e"/>
+    <path d="M30 5 C30 5, 30 75, 30 75" stroke="#5a8a1f" stroke-width="1.5" opacity="0.5"/>
+  </svg>
+
+  <!-- Hoja 8 -->
+  <svg class="hoja absolute animate-float-slow opacity-20" style="top:85%; right:20%; width:38px; animation-delay:0.3s;" viewBox="0 0 60 80" fill="none">
+    <path d="M30 5 C50 15, 58 35, 50 55 C42 72, 20 75, 12 60 C4 45, 8 20, 30 5Z" fill="#a8c96e"/>
+    <path d="M30 5 C30 5, 30 75, 30 75" stroke="#5a8a1f" stroke-width="1.5" opacity="0.4"/>
+  </svg>
+</div>

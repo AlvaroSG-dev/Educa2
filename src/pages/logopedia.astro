@@ -1,0 +1,122 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import ParallaxSection from '../components/ParallaxSection.astro';
+import HojasSVG from '../components/HojasSVG.astro';
+
+const servicios = [
+  {
+    icon: '🗣️',
+    title: 'Trastornos del Habla',
+    description: 'Intervención en dislalia, disfemia (tartamudez), disartria y otros trastornos que afectan a la articulación y fluidez del habla.',
+  },
+  {
+    icon: '👂',
+    title: 'Trastornos de la Audición',
+    description: 'Rehabilitación auditiva y trabajo con implantes cocleares, hipoacusia y otras alteraciones de la percepción auditiva.',
+  },
+  {
+    icon: '🎵',
+    title: 'Perturbaciones de la Voz',
+    description: 'Tratamiento de disfonías, nódulos vocales, voz nasal y otros problemas que afectan a la calidad y resistencia de la voz.',
+  },
+  {
+    icon: '📝',
+    title: 'Alteraciones del Lenguaje',
+    description: 'Intervención en retrasos del lenguaje, trastornos específicos, dislexia, disgrafía y dificultades de comprensión y expresión.',
+  },
+];
+---
+
+<Layout
+  title="Logopedia"
+  description="Servicio de logopedia en educa2 — Tratamiento de trastornos del habla, la audición, la voz y el lenguaje en Jerez de la Frontera y Puerto Real."
+>
+
+  <!-- ═══════════════════════════════════════════
+       HERO PARALLAX
+  ═══════════════════════════════════════════ -->
+  <ParallaxSection id="logo-hero" bgColor="#f0eaff" parallaxIntensity={0.35} className="min-h-[60vh] flex items-center py-32 px-4">
+    <HojasSVG />
+    <div class="max-w-3xl mx-auto text-center relative z-10 pt-8">
+      <p class="inline-block bg-morado/15 text-morado font-bold text-sm px-4 py-1.5 rounded-full mb-5">
+        Área de Logopedia
+      </p>
+      <h1 class="font-display text-5xl md:text-7xl font-black text-gris mb-5 leading-tight">
+        Cada voz <span style="color:#7b3f9e;">importa</span>
+      </h1>
+      <p class="text-gris-claro text-xl max-w-xl mx-auto leading-relaxed">
+        Ayudamos a niños y adultos a superar las dificultades en el habla, la comunicación y el lenguaje con un tratamiento personalizado y cercano.
+      </p>
+    </div>
+  </ParallaxSection>
+
+  <!-- ═══════════════════════════════════════════
+       SERVICIOS
+  ═══════════════════════════════════════════ -->
+  <section class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="text-morado font-bold text-sm tracking-widest uppercase mb-2">¿Cómo podemos ayudarte?</p>
+        <h2 class="font-display text-4xl font-black text-gris mb-4">Áreas de intervención</h2>
+        <p class="text-gris-claro max-w-xl mx-auto">Trabajamos en cuatro grandes áreas, siempre con una valoración inicial individualizada para diseñar el plan más adecuado.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {servicios.map(s => (
+          <ServiceCard
+            title={s.title}
+            description={s.description}
+            icon={s.icon}
+            accent="morado"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       ¿CÓMO TRABAJAMOS? — Parallax
+  ═══════════════════════════════════════════ -->
+  <ParallaxSection id="logo-metodologia" bgColor="#f3eeff" parallaxIntensity={0.2} className="py-20 px-4">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-4xl font-black text-gris mb-4">Nuestra metodología</h2>
+        <p class="text-gris-claro max-w-xl mx-auto">Un proceso estructurado y centrado en el bienestar de cada paciente.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {[
+          { num: '01', title: 'Evaluación inicial', desc: 'Valoración completa del estado del paciente para diseñar un plan de intervención personalizado.' },
+          { num: '02', title: 'Intervención activa', desc: 'Sesiones dinámicas y motivadoras con técnicas actualizadas y adaptadas a cada caso.' },
+          { num: '03', title: 'Seguimiento familiar', desc: 'Orientamos a la familia para que el trabajo continúe también en casa de forma natural.' },
+        ].map(step => (
+          <div class="service-card text-center bg-white/70 rounded-2xl p-7 border border-morado/10 opacity-0 translate-y-6">
+            <div class="font-display text-5xl font-black mb-3" style="color:#7b3f9e; opacity:0.25;">{step.num}</div>
+            <h3 class="font-bold text-gris text-xl mb-3">{step.title}</h3>
+            <p class="text-gris-claro text-sm leading-relaxed">{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </ParallaxSection>
+
+  <!-- ═══════════════════════════════════════════
+       CTA
+  ═══════════════════════════════════════════ -->
+  <section class="py-16 px-4 bg-white text-center">
+    <div class="max-w-xl mx-auto">
+      <h2 class="font-display text-3xl font-black text-gris mb-4">¿Tiene tu hijo dificultades al hablar?</h2>
+      <p class="text-gris-claro mb-8">Una evaluación temprana marca la diferencia. Contáctanos hoy sin compromiso.</p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="tel:956062004" class="bg-morado text-white font-bold px-8 py-3 rounded-full hover:bg-morado/80 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+          📞 Llamar ahora
+        </a>
+        <a href="/conocenos" class="border-2 border-morado text-morado font-bold px-8 py-3 rounded-full hover:bg-morado hover:text-white transition-all duration-200">
+          Conócenos
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

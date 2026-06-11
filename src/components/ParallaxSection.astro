@@ -1,0 +1,72 @@
+---
+interface Props {
+  id?: string;
+  bgColor?: string;
+  parallaxIntensity?: number;
+  className?: string;
+}
+
+const {
+  id,
+  bgColor = '#e8f5d0',
+  parallaxIntensity = 0.3,
+  className = '',
+} = Astro.props;
+---
+
+<section
+  id={id}
+  class={`parallax-section relative overflow-hidden ${className}`}
+  data-intensity={parallaxIntensity}
+  style={`background-color: ${bgColor};`}
+>
+  <!-- Parallax background layer -->
+  <div class="parallax-bg absolute inset-0 will-change-transform" style="transform: translateY(0px);">
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0" style={`background: linear-gradient(135deg, ${bgColor}dd 0%, ${bgColor}aa 50%, ${bgColor}ff 100%);`}></div>
+    <!-- Leaf pattern -->
+    <svg class="absolute inset-0 w-full h-full opacity-10" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <pattern id={`leaf-bg-${id}`} x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
+          <path d="M60 15 C80 25, 88 48, 78 68 C68 86, 42 88, 34 72 C26 56, 34 28, 60 15Z" fill="#8fbc4e"/>
+          <path d="M60 15 L60 88" stroke="#5a8a1f" stroke-width="1.5" opacity="0.4"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill={`url(#leaf-bg-${id})`}/>
+    </svg>
+  </div>
+
+  <!-- Content slot -->
+  <div class="relative z-10">
+    <slot />
+  </div>
+</section>
+
+<script>
+  function initParallax() {
+    const sections = document.querySelectorAll<HTMLElement>('.parallax-section');
+
+    sections.forEach(section => {
+      const bg = section.querySelector<HTMLElement>('.parallax-bg');
+      if (!bg) return;
+      const intensity = parseFloat(section.dataset.intensity || '0.3');
+
+      function update() {
+        const rect = section.getBoundingClientRect();
+        const viewH = window.innerHeight;
+        // Only animate when section is visible
+        if (rect.bottom < 0 || rect.top > viewH) return;
+        const progress = (viewH - rect.top) / (viewH + rect.height);
+        const offset = (progress - 0.5) * intensity * 200;
+        bg.style.transform = `translateY(${offset}px)`;
+      }
+
+      window.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+      update();
+    });
+  }
+
+  // Run on page load and after Astro transitions
+  initParallax();
+  document.addEventListener('astro:page-load', initParallax);
+</script>

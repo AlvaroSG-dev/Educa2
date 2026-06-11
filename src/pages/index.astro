@@ -1,0 +1,202 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HojasSVG from '../components/HojasSVG.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import ParallaxSection from '../components/ParallaxSection.astro';
+---
+
+<Layout
+  title="Inicio"
+  description="educa2, centro psicopedagógico en Jerez de la Frontera y Puerto Real. Logopedia, clases particulares y atención psicopedagógica para niños y jóvenes."
+>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO SECTION
+  ═══════════════════════════════════════════════ -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden" style="background: linear-gradient(160deg, #f0fad8 0%, #e2f4c5 40%, #d4edb5 100%);">
+
+    <!-- Floating leaves layers with different parallax speeds -->
+    <HojasSVG />
+
+    <!-- Extra deep background leaves -->
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <svg class="absolute animate-float-slow opacity-10" style="top:-5%; right:-3%; width:200px; animation-delay:0.5s;" viewBox="0 0 60 80" fill="none">
+        <path d="M30 5 C50 15, 58 35, 50 55 C42 72, 20 75, 12 60 C4 45, 8 20, 30 5Z" fill="#5a8a1f"/>
+        <path d="M30 5 L30 75" stroke="#3d6b0f" stroke-width="1.5" opacity="0.5"/>
+      </svg>
+      <svg class="absolute animate-float opacity-10" style="bottom:10%; left:-2%; width:160px; animation-delay:2s;" viewBox="0 0 60 80" fill="none">
+        <path d="M30 5 C50 15, 58 35, 50 55 C42 72, 20 75, 12 60 C4 45, 8 20, 30 5Z" fill="#5a8a1f"/>
+        <path d="M30 5 L30 75" stroke="#3d6b0f" stroke-width="1.5" opacity="0.5"/>
+      </svg>
+    </div>
+
+    <!-- Hero content -->
+    <div class="relative z-10 text-center px-4 max-w-3xl mx-auto pt-20">
+      <!-- Eyebrow -->
+      <p class="inline-block bg-verde/20 text-verde-oscuro font-semibold text-sm px-4 py-1.5 rounded-full mb-6 animate-fade-up" style="animation-delay:0.1s; animation-fill-mode:both;">
+        Centro Psicopedagógico · Jerez & Puerto Real
+      </p>
+
+      <!-- Logo mark -->
+      <div class="flex items-baseline justify-center gap-2 mb-4 animate-fade-up" style="animation-delay:0.2s; animation-fill-mode:both;">
+        <span class="font-display text-7xl md:text-9xl font-black leading-none" style="color:#b03030;">e</span>
+        <span class="font-display text-6xl md:text-8xl font-black text-gris leading-none">duca</span>
+        <span class="font-display text-7xl md:text-9xl font-black leading-none" style="color:#7b3f9e;">2</span>
+      </div>
+
+      <p class="text-gris-claro text-lg md:text-xl font-semibold mb-2 animate-fade-up" style="animation-delay:0.35s; animation-fill-mode:both;">
+        centro psicopedagógico
+      </p>
+
+      <p class="text-gris text-xl md:text-2xl font-light italic mb-10 animate-fade-up" style="animation-delay:0.5s; animation-fill-mode:both;">
+        "La tranquilidad de saber que nuestro hijo va bien."
+      </p>
+
+      <!-- CTA buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-3 animate-fade-up" style="animation-delay:0.65s; animation-fill-mode:both;">
+        <a href="/clases-particulares" class="bg-verde text-white font-bold px-6 py-3 rounded-full hover:bg-verde-oscuro transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+          Clases Particulares
+        </a>
+        <a href="/logopedia" class="bg-white text-morado border-2 border-morado font-bold px-6 py-3 rounded-full hover:bg-morado hover:text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+          Logopedia
+        </a>
+        <a href="/conocenos" class="text-gris-claro font-semibold px-4 py-3 hover:text-gris transition-colors">
+          Conócenos →
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gris-claro animate-bounce">
+      <span class="text-xs font-semibold tracking-widest uppercase opacity-60">Descubre</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SERVICIOS RESUMEN
+  ═══════════════════════════════════════════════ -->
+  <section class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="text-verde font-bold text-sm tracking-widest uppercase mb-2">Nuestros servicios</p>
+        <h2 class="font-display text-4xl font-black text-gris mb-4">¿En qué podemos ayudarte?</h2>
+        <p class="text-gris-claro max-w-xl mx-auto">Acompañamos a niños y jóvenes en su desarrollo educativo y comunicativo desde un enfoque integral y personalizado.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <ServiceCard
+          title="Conócenos"
+          description="Quiénes somos y cómo trabajamos para que tu hijo alcance su máximo potencial."
+          icon="🌱"
+          href="/conocenos"
+          accent="verde"
+        />
+        <ServiceCard
+          title="Atención Psicopedagógica"
+          description="Evaluación, diagnóstico e intervención en dificultades del aprendizaje."
+          icon="🧠"
+          href="/psicopedagogia"
+          accent="verde"
+        />
+        <ServiceCard
+          title="Logopedia"
+          description="Prevención y tratamiento de trastornos del habla, la voz y el lenguaje."
+          icon="💬"
+          href="/logopedia"
+          accent="morado"
+        />
+        <ServiceCard
+          title="Clases Particulares"
+          description="Refuerzo escolar personalizado con profesores especializados para todos los niveles."
+          icon="📚"
+          href="/clases-particulares"
+          accent="burdeos"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       BANNER PARALLAX — LOGOPEDIA
+  ═══════════════════════════════════════════════ -->
+  <ParallaxSection id="home-logopedia" bgColor="#f3eeff" parallaxIntensity={0.25} className="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-morado font-bold text-sm tracking-widest uppercase mb-3">Logopedia</p>
+          <h2 class="font-display text-4xl font-black text-gris mb-5 leading-tight">Cada voz merece ser escuchada</h2>
+          <p class="text-gris-claro leading-relaxed mb-6">Nuestro equipo de logopedas trabaja con niños y adultos para superar dificultades en el habla, la comunicación y el lenguaje, con un tratamiento personalizado y cercano.</p>
+          <a href="/logopedia" class="inline-flex items-center gap-2 bg-morado text-white font-bold px-6 py-3 rounded-full hover:bg-morado/80 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+            Ver servicios de Logopedia →
+          </a>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { icon: '🗣️', label: 'Trastornos del habla' },
+            { icon: '👂', label: 'Trastornos de la audición' },
+            { icon: '🎵', label: 'Perturbaciones de la voz' },
+            { icon: '📝', label: 'Alteraciones del lenguaje' },
+          ].map(item => (
+            <div class="service-card bg-white rounded-2xl p-4 shadow-sm border border-morado/10 text-center opacity-0 translate-y-6">
+              <div class="text-3xl mb-2">{item.icon}</div>
+              <p class="font-semibold text-gris text-sm">{item.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </ParallaxSection>
+
+  <!-- ═══════════════════════════════════════════════
+       BANNER PARALLAX — CLASES PARTICULARES
+  ═══════════════════════════════════════════════ -->
+  <ParallaxSection id="home-clases" bgColor="#fff5f5" parallaxIntensity={0.2} className="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-burdeos font-bold text-sm tracking-widest uppercase mb-3">Clases Particulares</p>
+        <h2 class="font-display text-4xl font-black text-gris mb-4">Aprendizaje a tu medida</h2>
+        <p class="text-gris-claro max-w-xl mx-auto">Grupos reducidos, profesores especializados y seguimiento psicopedagógico para garantizar el progreso de cada alumno.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        {[
+          { icon: '👥', label: 'Grupos reducidos' },
+          { icon: '🎓', label: 'Profesores especializados' },
+          { icon: '🌍', label: 'Clases de idiomas' },
+          { icon: '📐', label: 'Todas las materias' },
+        ].map(item => (
+          <div class="service-card bg-white rounded-2xl p-4 shadow-sm border border-burdeos/10 text-center opacity-0 translate-y-6">
+            <div class="text-3xl mb-2">{item.icon}</div>
+            <p class="font-semibold text-gris text-sm">{item.label}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center">
+        <a href="/clases-particulares" class="inline-flex items-center gap-2 bg-burdeos text-white font-bold px-8 py-3 rounded-full hover:bg-burdeos/80 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+          Ver todos los servicios →
+        </a>
+      </div>
+    </div>
+  </ParallaxSection>
+
+  <!-- ═══════════════════════════════════════════════
+       CTA FINAL
+  ═══════════════════════════════════════════════ -->
+  <section class="py-20 px-4 bg-verde" style="background: linear-gradient(135deg, #8fbc4e 0%, #5a8a1f 100%);">
+    <div class="max-w-2xl mx-auto text-center text-white">
+      <h2 class="font-display text-4xl font-black mb-4">¿Hablamos?</h2>
+      <p class="text-white/80 text-lg mb-8">Llámanos o visítanos en cualquiera de nuestros centros. Estaremos encantados de atenderte.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="tel:956062004" class="bg-white text-verde-oscuro font-bold px-8 py-3 rounded-full hover:bg-verde-bg transition-colors duration-200 hover:shadow-lg">
+          📞 956 06 2004
+        </a>
+        <a href="/conocenos" class="border-2 border-white text-white font-bold px-8 py-3 rounded-full hover:bg-white/10 transition-colors duration-200">
+          Conócenos
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
