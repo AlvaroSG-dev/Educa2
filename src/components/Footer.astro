@@ -1,52 +1,85 @@
 ---
+// src/components/Footer.astro
+import LocationGoogle from "./LocationGoogle.astro";
 ---
 
 <footer class="bg-gris text-white relative overflow-hidden">
   <div class="absolute inset-0 opacity-5" aria-hidden="true">
     <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <pattern id="leaf-pattern" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-          <path d="M40 10 C55 18, 62 35, 55 50 C48 64, 28 66, 22 52 C16 38, 22 18, 40 10Z" fill="#8fbc4e"/>
+        <pattern
+          id="leaf-pattern"
+          x="0"
+          y="0"
+          width="80"
+          height="80"
+          patternUnits="userSpaceOnUse"
+        >
+          <path
+            d="M40 10 C55 18, 62 35, 55 50 C48 64, 28 66, 22 52 C16 38, 22 18, 40 10Z"
+            fill="#8fbc4e"></path>
         </pattern>
       </defs>
-      <rect width="100%" height="100%" fill="url(#leaf-pattern)"/>
+      <rect width="100%" height="100%" fill="url(#leaf-pattern)"></rect>
     </svg>
   </div>
 
   <div class="relative max-w-6xl mx-auto px-4 py-12">
-    <div class="text-center mb-8">
-      <div class="inline-flex items-center gap-1 mb-2">
-        <span class="font-display text-3xl font-black" style="color:#e87070;">e</span>
-        <span class="font-display text-3xl font-black text-white">duca</span>
-        <span class="font-display text-3xl font-black" style="color:#b07fd4;">2</span>
+    <div class="flex flex-col md:flex-row md:pl-36 items-center justify-center  gap-8 ">
+      <div class="text-center ">
+        <div class="inline-flex items-center gap-1 mb-1">
+          <span class="font-display text-3xl font-black" style="color:#e87070;"
+            >e</span
+          >
+          <span class="font-display text-3xl font-black text-white">duca</span>
+          <span class="font-display text-3xl font-black" style="color:#b07fd4;"
+            >2</span
+          >
+        </div>
+        <p class="text-verde-claro font-semibold text-sm">
+          centro psicopedagógico
+        </p>
+        <p class="text-white/60 text-sm italic mt-0.5">
+          "La tranquilidad de saber que nuestro hijo va bien."
+        </p>
       </div>
-      <p class="text-verde-claro font-semibold text-sm">centro psicopedagógico</p>
-      <p class="text-white/60 text-sm italic mt-1">"La tranquilidad de saber que nuestro hijo va bien."</p>
+      <LocationGoogle />
     </div>
 
     <!-- Única sede: Jerez de la Frontera -->
-    <div class="max-w-sm mx-auto mb-8">
-      <div class="bg-white/5 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors">
-        <div class="text-verde mb-2">
-          <span class="material-symbols-outlined text-3xl" aria-hidden="true">location_on</span>
-        </div>
-        <h3 class="font-bold text-white mb-1">Jerez de la Frontera</h3>
-        <p class="text-white/70 text-sm">Avd. Reino Unido, 4</p>
-        <a href="tel:956062004" class="inline-flex items-center gap-1.5 mt-3 text-verde-claro font-bold text-sm hover:text-white transition-colors">
-          <span class="material-symbols-outlined text-base" aria-hidden="true">call</span>
-          956 06 2004
-        </a>
-      </div>
-    </div>
 
-    <nav class="flex flex-wrap justify-center gap-4 mb-6 text-sm" aria-label="Navegación del pie de página">
-      <a href="/" class="text-white/50 hover:text-verde-claro transition-colors">Inicio</a>
-      <a href="/conocenos" class="text-white/50 hover:text-verde-claro transition-colors">Conócenos</a>
-      <a href="/psicopedagogia" class="text-white/50 hover:text-verde-claro transition-colors">Psicopedagogía</a>
-      <a href="/logopedia" class="text-white/50 hover:text-verde-claro transition-colors">Logopedia</a>
-      <a href="/clases-particulares" class="text-white/50 hover:text-verde-claro transition-colors">Clases Particulares</a>
+    <nav
+      class="flex flex-wrap justify-center gap-4 mb-6 text-sm"
+      aria-label="Navegación del pie de página"
+    >
+      <a href="/" class="text-white/50 hover:text-verde-claro transition-colors"
+        >Inicio</a
+      >
+      <a
+        href="/conocenos"
+        class="text-white/50 hover:text-verde-claro transition-colors"
+        >Conócenos</a
+      >
+      <a
+        href="/psicopedagogia"
+        class="text-white/50 hover:text-verde-claro transition-colors"
+        >Psicopedagogía</a
+      >
+      <a
+        href="/logopedia"
+        class="text-white/50 hover:text-verde-claro transition-colors"
+        >Logopedia</a
+      >
+      <a
+        href="/clases-particulares"
+        class="text-white/50 hover:text-verde-claro transition-colors"
+        >Clases Particulares</a
+      >
     </nav>
 
-    <p class="text-center text-white/30 text-xs">© {new Date().getFullYear()} educa2 Centro Psicopedagógico · Todos los derechos reservados</p>
+    <p class="text-center text-white/30 text-xs">
+      © {new Date().getFullYear()} educa2 Centro Psicopedagógico · Todos los derechos
+      reservados
+    </p>
   </div>
 </footer>

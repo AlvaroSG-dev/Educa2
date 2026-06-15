@@ -15,8 +15,8 @@ function isActive(href: string) {
 }
 ---
 
-<header id="nav-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-  <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between" aria-label="Navegación principal">
+<header id="nav-header" class="fixed top-0 backdrop-blur-md border-b border-verde-bg md:border-0 left-0 right-0 z-50 transition-all duration-300">
+  <nav class="max-w-6xl mx-auto px-4 py-3  flex items-center justify-between" aria-label="Navegación principal">
 
     <!-- Logo -->
     <a href="/" class="flex items-center gap-1 group" aria-label="educa2 - Inicio">
@@ -91,9 +91,17 @@ function isActive(href: string) {
   const burgerIcon = header?.querySelector('.burger-icon');
 
   function updateNav() {
-    const scrolled = window.scrollY > 60;
+    // SUBIMOS EL VALOR: 500px suele ser la altura aproximada de esa sección verde inicial.
+    // Ajusta este número si quieres que cambie un poco antes o después.
+    const scrolled = window.scrollY > 500; 
+    
     if (scrolled) {
-      header?.classList.add('bg-white/97', 'shadow-md', 'backdrop-blur-sm');
+      // 1. Quitamos el fondo transparente original para que no choque
+      header?.classList.remove('bg-transparent'); 
+      
+      // 2. Añadimos el fondo blanco (usamos bg-white seco o bg-white/[0.97] si quieres transparencia exacta)
+      header?.classList.add('bg-white', 'shadow-md', 'backdrop-blur-sm');
+      
       // logo duca oscuro
       navLogoDuca?.classList.replace('text-white', 'text-gris');
       // burger icon oscuro
@@ -113,7 +121,10 @@ function isActive(href: string) {
       navCta?.classList.remove('bg-white/20', 'text-white', 'border', 'border-white/30');
       navCta?.classList.add('bg-verde', 'text-white');
     } else {
-      header?.classList.remove('bg-white/97', 'shadow-md', 'backdrop-blur-sm');
+      // Al volver arriba, limpiamos el blanco y devolvemos el transparente original
+      header?.classList.remove('bg-white', 'bg-white/[0.97]', 'shadow-md', 'backdrop-blur-sm');
+      header?.classList.add('bg-transparent'); 
+
       navLogoDuca?.classList.replace('text-gris', 'text-white');
       burgerIcon?.classList.replace('text-gris', 'text-white');
       header?.querySelector('.nav-logo-e')?.setAttribute('style', 'color:#e87070;');
