@@ -167,9 +167,9 @@
   // CONFIGURA AQUÍ TUS CREDENCIALES DE EMAILJS
   // 
   // ─────────────────────────────────────────────
-  const EMAILJS_PUBLIC_KEY  = 'TU_PUBLIC_KEY';    
-  const EMAILJS_SERVICE_ID  = 'TU_SERVICE_ID';    
-  const EMAILJS_TEMPLATE_ID = 'TU_TEMPLATE_ID';   
+    const EMAILJS_PUBLIC_KEY  = import.meta.env.PUBLIC_EMAILJS_KEY;
+    const EMAILJS_SERVICE_ID  = import.meta.env.PUBLIC_EMAILJS_SERVICE;
+    const EMAILJS_TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE;   
   // ─────────────────────────────────────────────
 
   (window as any).emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
