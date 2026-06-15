@@ -2,201 +2,395 @@
 import Layout from '../layouts/Layout.astro';
 import HojasSVG from '../components/HojasSVG.astro';
 import ServiceCard from '../components/ServiceCard.astro';
-import ParallaxSection from '../components/ParallaxSection.astro';
+import ScrollReveal from '../components/ScrollReveal.astro';
+import ImageCard from '../components/ImageCard.astro';
+
+// Imágenes de Unsplash (licencia libre)
+const IMGS = {
+  // Hero: niña leyendo en un espacio educativo luminoso
+  logoHero:  'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&q=85&auto=format&fit=crop',
+  // Logopedia: logopeda trabajando con niño
+  ninos1:    'https://images.unsplash.com/photo-1571260898995-4ae0a0d5bd79?w=1600&q=85&auto=format&fit=crop',
+  // Galería: niña leyendo un libro (cálida)
+  ninos2:    'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&q=85&auto=format&fit=crop',
+  // Galería: niño estudiando concentrado
+  ninos4:    'https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=800&q=85&auto=format&fit=crop',
+  // Galería: niños felices aprendiendo juntos
+  ninos5:    'https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&q=85&auto=format&fit=crop',
+  // Clases particulares: profesora con alumnos en aula
+  clases:    'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&q=85&auto=format&fit=crop',
+};
 ---
 
 <Layout
   title="Inicio"
-  description="educa2, centro psicopedagógico en Jerez de la Frontera y Puerto Real. Logopedia, clases particulares y atención psicopedagógica para niños y jóvenes."
+  description="educa2, centro psicopedagógico en Jerez de la Frontera. Logopedia, clases particulares y atención psicopedagógica para niños y jóvenes."
 >
 
-  <!-- ═══════════════════════════════════════════════
-       HERO SECTION
-  ═══════════════════════════════════════════════ -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden" style="background: linear-gradient(160deg, #f0fad8 0%, #e2f4c5 40%, #d4edb5 100%);">
+  <!-- ══════════════════════════════════════════
+       HERO — imagen de fondo + hojas parallax
+  ══════════════════════════════════════════ -->
+  <section
+    class="relative min-h-screen flex items-center justify-center overflow-hidden"
+    style="background: linear-gradient(160deg,#0e1f0a 0%,#162a0c 100%);"
+  >
+    <!-- Imagen de fondo con parallax -->
+    <div
+      id="hero-bg"
+      class="absolute inset-0 will-change-transform"
+      style={`
+        background-image: url('${IMGS.logoHero}');
+        background-size: cover;
+        background-position: center 30%;
+        filter: brightness(0.38) saturate(0.8);
+        transform: scale(1.06);
+      `}
+      aria-hidden="true"
+    />
+    <!-- Overlay gradiente verde oscuro —> verde medio para legibilidad -->
+    <div class="absolute inset-0"
+      style="background: linear-gradient(170deg, rgba(10,30,5,0.72) 0%, rgba(90,138,31,0.45) 60%, rgba(143,188,78,0.25) 100%);"
+      aria-hidden="true"
+    />
 
-    <!-- Floating leaves layers with different parallax speeds -->
     <HojasSVG />
 
-    <!-- Extra deep background leaves -->
-    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-      <svg class="absolute animate-float-slow opacity-10" style="top:-5%; right:-3%; width:200px; animation-delay:0.5s;" viewBox="0 0 60 80" fill="none">
-        <path d="M30 5 C50 15, 58 35, 50 55 C42 72, 20 75, 12 60 C4 45, 8 20, 30 5Z" fill="#5a8a1f"/>
-        <path d="M30 5 L30 75" stroke="#3d6b0f" stroke-width="1.5" opacity="0.5"/>
-      </svg>
-      <svg class="absolute animate-float opacity-10" style="bottom:10%; left:-2%; width:160px; animation-delay:2s;" viewBox="0 0 60 80" fill="none">
-        <path d="M30 5 C50 15, 58 35, 50 55 C42 72, 20 75, 12 60 C4 45, 8 20, 30 5Z" fill="#5a8a1f"/>
-        <path d="M30 5 L30 75" stroke="#3d6b0f" stroke-width="1.5" opacity="0.5"/>
-      </svg>
-    </div>
-
-    <!-- Hero content -->
-    <div class="relative z-10 text-center px-4 max-w-3xl mx-auto pt-20">
-      <!-- Eyebrow -->
-      <p class="inline-block bg-verde/20 text-verde-oscuro font-semibold text-sm px-4 py-1.5 rounded-full mb-6 animate-fade-up" style="animation-delay:0.1s; animation-fill-mode:both;">
-        Centro Psicopedagógico · Jerez & Puerto Real
+    <!-- Contenido -->
+    <div class="relative z-10 text-center px-4 max-w-3xl mx-auto pt-24 pb-16">
+      <p class="hero-anim inline-block bg-white/15 text-white font-bold text-sm
+                px-4 py-1.5 rounded-full mb-6 backdrop-blur-sm border border-white/20"
+         style="animation-delay:0.05s">
+        Centro Psicopedagógico · Jerez de la Frontera
       </p>
 
-      <!-- Logo mark -->
-      <div class="flex items-baseline justify-center gap-2 mb-4 animate-fade-up" style="animation-delay:0.2s; animation-fill-mode:both;">
-        <span class="font-display text-7xl md:text-9xl font-black leading-none" style="color:#b03030;">e</span>
-        <span class="font-display text-6xl md:text-8xl font-black text-gris leading-none">duca</span>
-        <span class="font-display text-7xl md:text-9xl font-black leading-none" style="color:#7b3f9e;">2</span>
+      <div class="hero-anim flex items-baseline justify-center gap-1 mb-3"
+           style="animation-delay:0.15s">
+        <span class="font-display text-8xl md:text-[9rem] font-black leading-none drop-shadow-lg"
+              style="color:#e87070;">e</span>
+        <span class="font-display text-7xl md:text-8xl font-black text-white leading-none drop-shadow-sm">duca</span>
+        <span class="font-display text-8xl md:text-[9rem] font-black leading-none drop-shadow-lg"
+              style="color:#c49ef0;">2</span>
       </div>
 
-      <p class="text-gris-claro text-lg md:text-xl font-semibold mb-2 animate-fade-up" style="animation-delay:0.35s; animation-fill-mode:both;">
+      <p class="hero-anim text-white/80 text-lg font-semibold mb-2"
+         style="animation-delay:0.3s">
         centro psicopedagógico
       </p>
-
-      <p class="text-gris text-xl md:text-2xl font-light italic mb-10 animate-fade-up" style="animation-delay:0.5s; animation-fill-mode:both;">
+      <p class="hero-anim text-white/90 text-xl md:text-2xl italic font-light mb-10"
+         style="animation-delay:0.45s">
         "La tranquilidad de saber que nuestro hijo va bien."
       </p>
 
-      <!-- CTA buttons -->
-      <div class="flex flex-wrap items-center justify-center gap-3 animate-fade-up" style="animation-delay:0.65s; animation-fill-mode:both;">
-        <a href="/clases-particulares" class="bg-verde text-white font-bold px-6 py-3 rounded-full hover:bg-verde-oscuro transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+      <div class="hero-anim flex flex-wrap justify-center gap-3"
+           style="animation-delay:0.6s">
+        <a href="/clases-particulares"
+           class="bg-burdeos text-white font-bold px-7 py-3 rounded-full shadow-lg
+                  hover:bg-burdeos/80 hover:-translate-y-0.5 transition-all duration-200">
           Clases Particulares
         </a>
-        <a href="/logopedia" class="bg-white text-morado border-2 border-morado font-bold px-6 py-3 rounded-full hover:bg-morado hover:text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+        <a href="/logopedia"
+           class="bg-morado text-white font-bold px-7 py-3 rounded-full shadow-lg
+                  hover:bg-morado/80 hover:-translate-y-0.5 transition-all duration-200">
           Logopedia
         </a>
-        <a href="/conocenos" class="text-gris-claro font-semibold px-4 py-3 hover:text-gris transition-colors">
+        <a href="/conocenos"
+           class="bg-white/80 text-gris font-semibold px-5 py-3 rounded-full
+                  hover:bg-white transition-all duration-200">
           Conócenos →
         </a>
       </div>
     </div>
 
     <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gris-claro animate-bounce">
-      <span class="text-xs font-semibold tracking-widest uppercase opacity-60">Descubre</span>
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10l5 5 5-5"/></svg>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1
+                text-white/60 animate-bounce">
+      <span class="text-xs font-semibold tracking-widest uppercase">Descubre</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M7 10l5 5 5-5"/>
+      </svg>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════
-       SERVICIOS RESUMEN
-  ═══════════════════════════════════════════════ -->
-  <section class="py-20 px-4 bg-white">
+
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN 1 — ¿QUÉ HACEMOS? (scroll reveal)
+  ══════════════════════════════════════════ -->
+  <ScrollReveal bgColor="#ffffff" direction="up" className="py-20 px-4">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-14">
-        <p class="text-verde font-bold text-sm tracking-widest uppercase mb-2">Nuestros servicios</p>
-        <h2 class="font-display text-4xl font-black text-gris mb-4">¿En qué podemos ayudarte?</h2>
-        <p class="text-gris-claro max-w-xl mx-auto">Acompañamos a niños y jóvenes en su desarrollo educativo y comunicativo desde un enfoque integral y personalizado.</p>
+      <div class="text-center mb-14 reveal-child" data-reveal-delay="0">
+        <p class="text-verde-oscuro font-bold text-sm tracking-widest uppercase mb-2">Nuestros servicios</p>
+        <h2 class="font-display text-4xl md:text-5xl font-black text-gris mb-4">
+          ¿En qué podemos ayudarte?
+        </h2>
+        <p class="text-gris-claro max-w-xl mx-auto">
+          Acompañamos a niños y jóvenes en su desarrollo educativo y comunicativo
+          desde un enfoque integral y personalizado.
+        </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-        <ServiceCard
-          title="Conócenos"
-          description="Quiénes somos y cómo trabajamos para que tu hijo alcance su máximo potencial."
-          icon="🌱"
-          href="/conocenos"
-          accent="verde"
-        />
-        <ServiceCard
-          title="Atención Psicopedagógica"
-          description="Evaluación, diagnóstico e intervención en dificultades del aprendizaje."
-          icon="🧠"
-          href="/psicopedagogia"
-          accent="verde"
-        />
-        <ServiceCard
-          title="Logopedia"
-          description="Prevención y tratamiento de trastornos del habla, la voz y el lenguaje."
-          icon="💬"
-          href="/logopedia"
-          accent="morado"
-        />
-        <ServiceCard
-          title="Clases Particulares"
-          description="Refuerzo escolar personalizado con profesores especializados para todos los niveles."
-          icon="📚"
-          href="/clases-particulares"
-          accent="burdeos"
-        />
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
+        <div class="reveal-child h-full" data-reveal-delay="100"><ServiceCard title="Conócenos" description="Quiénes somos y cómo trabajamos cada día." icon="🌱" href="/conocenos" accent="verde"/></div>
+        <div class="reveal-child h-full" data-reveal-delay="200"><ServiceCard title="Psicopedagogía" description="Evaluación, diagnóstico e intervención en dificultades del aprendizaje." icon="🧠" href="/psicopedagogia" accent="verde"/></div>
+        <div class="reveal-child h-full" data-reveal-delay="300"><ServiceCard title="Logopedia" description="Prevención y tratamiento de trastornos del habla, la voz y el lenguaje." icon="💬" href="/logopedia" accent="morado"/></div>
+        <div class="reveal-child h-full" data-reveal-delay="400"><ServiceCard title="Clases Particulares" description="Refuerzo personalizado con profesores especializados para todos los niveles." icon="📚" href="/clases-particulares" accent="burdeos"/></div>
       </div>
     </div>
-  </section>
+  </ScrollReveal>
 
-  <!-- ═══════════════════════════════════════════════
-       BANNER PARALLAX — LOGOPEDIA
-  ═══════════════════════════════════════════════ -->
-  <ParallaxSection id="home-logopedia" bgColor="#f3eeff" parallaxIntensity={0.25} className="py-20 px-4">
+
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN 2 — LOGOPEDIA (imagen difuminada + scroll reveal)
+  ══════════════════════════════════════════ -->
+  <ScrollReveal
+    bgImage={IMGS.ninos1}
+    bgOverlay="linear-gradient(135deg, rgba(60,20,90,0.72) 0%, rgba(123,63,158,0.5) 50%, rgba(30,10,50,0.6) 100%)"
+    direction="left"
+    className="py-24 px-4"
+    minHeight="520px"
+  >
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <p class="text-morado font-bold text-sm tracking-widest uppercase mb-3">Logopedia</p>
-          <h2 class="font-display text-4xl font-black text-gris mb-5 leading-tight">Cada voz merece ser escuchada</h2>
-          <p class="text-gris-claro leading-relaxed mb-6">Nuestro equipo de logopedas trabaja con niños y adultos para superar dificultades en el habla, la comunicación y el lenguaje, con un tratamiento personalizado y cercano.</p>
-          <a href="/logopedia" class="inline-flex items-center gap-2 bg-morado text-white font-bold px-6 py-3 rounded-full hover:bg-morado/80 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+        <div class="reveal-child" data-reveal-delay="0">
+          <p class="text-white font-bold text-sm tracking-widest uppercase mb-3
+                    bg-white/20 inline-block px-3 py-1 rounded-full backdrop-blur-sm">Logopedia</p>
+          <h2 class="font-display text-4xl md:text-5xl font-black text-white mb-5 leading-tight drop-shadow-lg">
+            Cada voz <span style="color:#e4d0ff;">merece ser<br/>escuchada</span>
+          </h2>
+          <p class="text-white/90 leading-relaxed mb-8 text-lg drop-shadow">
+            Nuestro equipo de logopedas trabaja con niños y adultos para superar
+            dificultades del habla, la comunicación y el lenguaje con un tratamiento
+            personalizado y cercano.
+          </p>
+          <a href="/logopedia"
+             class="inline-flex items-center gap-2 bg-white text-morado font-bold
+                    px-7 py-3 rounded-full shadow-lg
+                    hover:bg-morado hover:text-white hover:-translate-y-0.5
+                    transition-all duration-200">
             Ver servicios de Logopedia →
           </a>
         </div>
+
+        <!-- Grid de 4 áreas -->
         <div class="grid grid-cols-2 gap-4">
           {[
             { icon: '🗣️', label: 'Trastornos del habla' },
             { icon: '👂', label: 'Trastornos de la audición' },
             { icon: '🎵', label: 'Perturbaciones de la voz' },
             { icon: '📝', label: 'Alteraciones del lenguaje' },
-          ].map(item => (
-            <div class="service-card bg-white rounded-2xl p-4 shadow-sm border border-morado/10 text-center opacity-0 translate-y-6">
+          ].map((item, i) => (
+            <div class="reveal-child bg-white/20 backdrop-blur-sm rounded-2xl p-5
+                        border border-white/30 text-center
+                        hover:bg-white/30 transition-all duration-300
+                        hover:-translate-y-1 hover:shadow-lg"
+                 data-reveal-delay={String(i * 120)}>
               <div class="text-3xl mb-2">{item.icon}</div>
-              <p class="font-semibold text-gris text-sm">{item.label}</p>
+              <p class="font-semibold text-white text-sm drop-shadow">{item.label}</p>
             </div>
           ))}
         </div>
       </div>
     </div>
-  </ParallaxSection>
+  </ScrollReveal>
 
-  <!-- ═══════════════════════════════════════════════
-       BANNER PARALLAX — CLASES PARTICULARES
-  ═══════════════════════════════════════════════ -->
-  <ParallaxSection id="home-clases" bgColor="#fff5f5" parallaxIntensity={0.2} className="py-20 px-4">
+
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN 3 — GALERÍA DE IMÁGENES (scroll reveal)
+  ══════════════════════════════════════════ -->
+  <ScrollReveal bgColor="#f8fdf2" direction="up" className="py-20 px-4">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <p class="text-burdeos font-bold text-sm tracking-widest uppercase mb-3">Clases Particulares</p>
-        <h2 class="font-display text-4xl font-black text-gris mb-4">Aprendizaje a tu medida</h2>
-        <p class="text-gris-claro max-w-xl mx-auto">Grupos reducidos, profesores especializados y seguimiento psicopedagógico para garantizar el progreso de cada alumno.</p>
+      <div class="text-center mb-12 reveal-child" data-reveal-delay="0">
+        <p class="text-verde-oscuro font-bold text-sm tracking-widest uppercase mb-2">Nuestro entorno</p>
+        <h2 class="font-display text-4xl font-black text-gris">
+          Un espacio pensado para aprender
+        </h2>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="reveal-child" data-reveal-delay="100">
+          <ImageCard
+            image={IMGS.ninos2}
+            alt="Niño leyendo un libro"
+            title="Lectura y comprensión"
+            description="Fomentamos el amor por la lectura desde pequeños."
+            href="/clases-particulares"
+            accent="#b03030"
+          />
+        </div>
+        <div class="reveal-child" data-reveal-delay="250">
+          <ImageCard
+            image={IMGS.ninos4}
+            alt="Niño estudiando concentrado"
+            title="Concentración y esfuerzo"
+            description="Técnicas de estudio adaptadas a cada alumno."
+            href="/psicopedagogia"
+            accent="#8fbc4e"
+          />
+        </div>
+        <div class="reveal-child" data-reveal-delay="400">
+          <ImageCard
+            image={IMGS.ninos5}
+            alt="Niños felices aprendiendo"
+            title="Aprender con alegría"
+            description="El aprendizaje es más efectivo cuando es disfrutable."
+            href="/conocenos"
+            accent="#7b3f9e"
+          />
+        </div>
+      </div>
+    </div>
+  </ScrollReveal>
+
+
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN 4 — CLASES PARTICULARES (imagen difuminada + scroll reveal)
+  ══════════════════════════════════════════ -->
+  <ScrollReveal
+    bgImage={IMGS.clases}
+    bgOverlay="linear-gradient(135deg, rgba(100,20,20,0.72) 0%, rgba(176,48,48,0.5) 50%, rgba(50,10,10,0.65) 100%)"
+    direction="right"
+    className="py-24 px-4"
+    minHeight="480px"
+  >
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12 reveal-child" data-reveal-delay="0">
+        <p class="text-white font-bold text-sm tracking-widest uppercase mb-3
+                  bg-white/20 inline-block px-3 py-1 rounded-full backdrop-blur-sm">
+          Clases Particulares
+        </p>
+        <h2 class="font-display text-4xl md:text-5xl font-black text-white mb-4 drop-shadow-lg">
+          Aprendizaje <span style="color:#ffcece;">a tu medida</span>
+        </h2>
+        <p class="text-white/90 max-w-xl mx-auto text-lg drop-shadow">
+          Grupos reducidos, profesores especializados y seguimiento psicopedagógico
+          para garantizar el progreso de cada alumno.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
         {[
           { icon: '👥', label: 'Grupos reducidos' },
           { icon: '🎓', label: 'Profesores especializados' },
           { icon: '🌍', label: 'Clases de idiomas' },
           { icon: '📐', label: 'Todas las materias' },
-        ].map(item => (
-          <div class="service-card bg-white rounded-2xl p-4 shadow-sm border border-burdeos/10 text-center opacity-0 translate-y-6">
-            <div class="text-3xl mb-2">{item.icon}</div>
-            <p class="font-semibold text-gris text-sm">{item.label}</p>
+          { icon: '🔬', label: 'Seg. psicopedagógico' },
+          { icon: '📋', label: 'Prep. de pruebas' },
+          { icon: '🏠', label: 'Clases a domicilio' },
+          { icon: '🎒', label: 'Todos los niveles' },
+        ].map((item, i) => (
+          <div class="reveal-child bg-white/20 backdrop-blur-sm rounded-2xl p-4
+                      border border-white/30 text-center
+                      hover:bg-white/30 hover:-translate-y-1 hover:shadow-lg
+                      transition-all duration-300"
+               data-reveal-delay={String(50 + i * 80)}>
+            <div class="text-2xl mb-1.5">{item.icon}</div>
+            <p class="font-semibold text-white text-xs drop-shadow">{item.label}</p>
           </div>
         ))}
       </div>
 
-      <div class="text-center">
-        <a href="/clases-particulares" class="inline-flex items-center gap-2 bg-burdeos text-white font-bold px-8 py-3 rounded-full hover:bg-burdeos/80 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+      <div class="text-center reveal-child" data-reveal-delay="750">
+        <a href="/clases-particulares"
+           class="inline-flex items-center gap-2 bg-white text-burdeos font-bold
+                  px-8 py-3 rounded-full shadow-lg
+                  hover:bg-burdeos hover:text-white hover:-translate-y-0.5
+                  transition-all duration-200">
           Ver todos los servicios →
         </a>
       </div>
     </div>
-  </ParallaxSection>
+  </ScrollReveal>
 
-  <!-- ═══════════════════════════════════════════════
+
+
+  <!-- ══════════════════════════════════════════
        CTA FINAL
-  ═══════════════════════════════════════════════ -->
-  <section class="py-20 px-4 bg-verde" style="background: linear-gradient(135deg, #8fbc4e 0%, #5a8a1f 100%);">
-    <div class="max-w-2xl mx-auto text-center text-white">
-      <h2 class="font-display text-4xl font-black mb-4">¿Hablamos?</h2>
-      <p class="text-white/80 text-lg mb-8">Llámanos o visítanos en cualquiera de nuestros centros. Estaremos encantados de atenderte.</p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="tel:956062004" class="bg-white text-verde-oscuro font-bold px-8 py-3 rounded-full hover:bg-verde-bg transition-colors duration-200 hover:shadow-lg">
+  ══════════════════════════════════════════ -->
+  <ScrollReveal direction="up" className="py-20 px-4"
+    bgColor="transparent">
+    <div class="max-w-2xl mx-auto text-center"
+         style="background:linear-gradient(135deg,#6fa832 0%,#4a7a12 100%);
+                border-radius:2rem; padding:3rem 2rem;
+                box-shadow: 0 20px 60px rgba(90,138,31,0.4);">
+      <div class="reveal-child" data-reveal-delay="0">
+        <h2 class="font-display text-4xl font-black text-white mb-4">¿Hablamos?</h2>
+        <p class="text-white/90 text-lg mb-8">
+          Llámanos o visítanos en nuestra sede de Jerez de la Frontera.
+          Estaremos encantados de atenderte.
+        </p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-4 reveal-child" data-reveal-delay="200">
+        <a href="tel:956062004"
+           class="bg-white text-verde-oscuro font-bold px-8 py-3 rounded-full
+                  hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200">
           📞 956 06 2004
         </a>
-        <a href="/conocenos" class="border-2 border-white text-white font-bold px-8 py-3 rounded-full hover:bg-white/10 transition-colors duration-200">
+        <a href="/conocenos"
+           class="border-2 border-white text-white font-bold px-8 py-3 rounded-full
+                  hover:bg-white/20 transition-colors duration-200">
           Conócenos
         </a>
       </div>
     </div>
-  </section>
+  </ScrollReveal>
 
 </Layout>
+
+<style>
+  /* Hero animations */
+  .hero-anim {
+    opacity: 0;
+    transform: translateY(28px);
+    animation: heroFadeUp 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  @keyframes heroFadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Reveal children — solo opacidad, sin translateY para evitar gaps de layout */
+  .reveal-child {
+    opacity: 0;
+    transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal-child.revealed {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  // Hero background parallax
+  const heroBg = document.getElementById('hero-bg');
+  if (heroBg) {
+    window.addEventListener('scroll', () => {
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        heroBg.style.transform = `scale(1.06) translateY(${y * 0.3}px)`;
+      });
+    }, { passive: true });
+  }
+
+  // Stagger reveal for children inside .scroll-reveal-section
+  function initChildReveal() {
+    const children = document.querySelectorAll<HTMLElement>('.reveal-child');
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const delay = parseInt(el.dataset.revealDelay || '0');
+            setTimeout(() => el.classList.add('revealed'), delay);
+            obs.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    children.forEach(c => obs.observe(c));
+  }
+
+  initChildReveal();
+  document.addEventListener('astro:page-load', initChildReveal);
+</script>

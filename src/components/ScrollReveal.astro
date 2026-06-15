@@ -1,0 +1,137 @@
+---
+/**
+ * ScrollReveal — Efecto tipo IONOS
+ * El contenido se revela hacia arriba con clip-path al hacer scroll.
+ * El fondo puede llevar una imagen difuminada con parallax.
+ *
+ * Props:
+ *   bgImage   — URL de imagen de fondo (opcional)
+ *   bgColor   — color de fondo sólido o con gradiente
+ *   direction — 'up' | 'left' | 'right' (dirección de entrada)
+ *   delay     — ms de retardo para escalonar
+ */
+interface Props {
+  bgImage?: string;
+  bgColor?: string;
+  bgOverlay?: string;
+  direction?: 'up' | 'left' | 'right';
+  delay?: number;
+  id?: string;
+  className?: string;
+  minHeight?: string;
+}
+
+const {
+  bgImage,
+  bgColor = 'transparent',
+  bgOverlay,
+  direction = 'up',
+  delay = 0,
+  id,
+  className = '',
+  minHeight = 'auto',
+} = Astro.props;
+
+// Overlay por defecto — oscuro general mejorado
+const defaultOverlay = 'linear-gradient(160deg, rgba(10,20,5,0.78) 0%, rgba(30,50,10,0.55) 60%, rgba(60,90,20,0.35) 100%)';
+const overlayStyle = bgOverlay ?? defaultOverlay;
+---
+
+<div
+  id={id}
+  class={`scroll-reveal-section relative overflow-hidden ${className}`}
+  data-direction={direction}
+  data-delay={delay}
+  style={`min-height: ${minHeight}; background-color: ${bgColor};`}
+>
+  <!-- Fondo con imagen -->
+  {bgImage && (
+    <div
+      class="reveal-bg-img absolute inset-0 will-change-transform"
+      style={`
+        background-image: url('${bgImage}');
+        background-size: cover;
+        background-position: center;
+        filter: brightness(0.42) saturate(0.85);
+        transform: scale(1.08);
+      `}
+      aria-hidden="true"
+    />
+  )}
+
+  <!-- Overlay sobre la imagen -->
+  {bgImage && (
+    <div
+      class="absolute inset-0"
+      style={`background: ${overlayStyle};`}
+      aria-hidden="true"
+    />
+  )}
+
+  <!-- Contenido que se revela -->
+  <div class="reveal-content relative z-10">
+    <slot />
+  </div>
+</div>
+
+<style>
+  /* Estado inicial: contenido invisible */
+  .scroll-reveal-section .reveal-content {
+    opacity: 0;
+    will-change: opacity;
+    transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Estado VISIBLE */
+  .scroll-reveal-section.is-visible .reveal-content {
+    opacity: 1;
+  }
+
+  /* Parallax suave en la imagen de fondo */
+  .reveal-bg-img {
+    transition: transform 0.1s linear;
+  }
+</style>
+
+<script>
+  function initScrollReveal() {
+    const sections = document.querySelectorAll<HTMLElement>('.scroll-reveal-section');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const delay = parseInt(el.dataset.delay || '0');
+            setTimeout(() => el.classList.add('is-visible'), delay);
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+    );
+
+    sections.forEach(s => observer.observe(s));
+
+    // Parallax en imágenes de fondo
+    const bgImgs = document.querySelectorAll<HTMLElement>('.reveal-bg-img');
+    if (bgImgs.length) {
+      window.addEventListener('scroll', () => {
+        requestAnimationFrame(() => {
+          bgImgs.forEach(img => {
+            const section = img.parentElement as HTMLElement;
+            const rect = section.getBoundingClientRect();
+            const vh = window.innerHeight;
+            if (rect.bottom < -100 || rect.top > vh + 100) return;
+            const progress = (vh - rect.top) / (vh + rect.height);
+            const offset = (progress - 0.5) * 80;
+            img.style.transform = `scale(1.08) translateY(${offset}px)`;
+          });
+        });
+      }, { passive: true });
+    }
+  }
+
+  initScrollReveal();
+  document.addEventListener('astro:page-load', initScrollReveal);
+</script>

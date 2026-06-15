@@ -1,126 +1,188 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ScrollReveal from '../components/ScrollReveal.astro';
 import ServiceCard from '../components/ServiceCard.astro';
-import ParallaxSection from '../components/ParallaxSection.astro';
+import ImageCard from '../components/ImageCard.astro';
+import PaintSplash from '../components/PaintSplash.astro';
 import HojasSVG from '../components/HojasSVG.astro';
+
+const IMGS = {
+  hero:   'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&q=85&auto=format&fit=crop',
+  est1:   'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&q=85&auto=format&fit=crop',
+  est2:   'https://images.unsplash.com/photo-1577896851231-70ef18881754?w=1600&q=85&auto=format&fit=crop',
+  est3:   'https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=800&q=85&auto=format&fit=crop',
+};
 
 const servicios = [
   { icon: '👥', title: 'Grupos reducidos', description: 'Clases con pocos alumnos para garantizar la atención individualizada que cada estudiante necesita.' },
   { icon: '🎓', title: 'Profesores especializados', description: 'Equipo docente con formación específica en cada materia y en técnicas de apoyo al aprendizaje.' },
-  { icon: '🌍', title: 'Clases de idiomas', description: 'Inglés, francés y otros idiomas con metodología comunicativa y orientada a los exámenes oficiales.' },
+  { icon: '🌍', title: 'Clases de idiomas', description: 'Inglés, francés y otros idiomas con metodología comunicativa orientada a exámenes oficiales.' },
   { icon: '📐', title: 'Todas las materias', description: 'Desde matemáticas y lengua hasta ciencias sociales, física o química. Cubrimos todo el currículo.' },
   { icon: '🔬', title: 'Seguimiento psicopedagógico', description: 'Control continuo del proceso de aprendizaje para detectar dificultades y adaptar la metodología.' },
   { icon: '📋', title: 'Preparación de pruebas', description: 'Entrenamiento específico para exámenes, selectividad, oposiciones y pruebas de acceso.' },
-  { icon: '🏠', title: 'Clases a domicilio', description: 'El profesor se desplaza al domicilio para mayor comodidad y en un entorno familiar.' },
+  { icon: '🏠', title: 'Clases a domicilio', description: 'El profesor se desplaza al domicilio para mayor comodidad en un entorno familiar.' },
   { icon: '🎒', title: 'Todos los niveles', description: 'Primaria, ESO, Bachillerato, universidad y adultos. Nunca es tarde para aprender.' },
 ];
 ---
 
 <Layout
   title="Clases Particulares"
-  description="Clases particulares en educa2 — Refuerzo escolar con profesores especializados, grupos reducidos y seguimiento psicopedagógico en Jerez de la Frontera y Puerto Real."
+  description="Clases particulares en Jerez de la Frontera — educa2. Grupos reducidos, profesores especializados y seguimiento psicopedagógico."
 >
 
-  <!-- ═══════════════════════════════════════════
-       HERO PARALLAX
-  ═══════════════════════════════════════════ -->
-  <ParallaxSection id="clases-hero" bgColor="#fff0f0" parallaxIntensity={0.35} className="min-h-[60vh] flex items-center py-32 px-4">
+  <!-- HERO con imagen difuminada -->
+  <section class="relative min-h-[65vh] flex items-center justify-center overflow-hidden pt-20">
+    <div id="clases-hero-bg" class="absolute inset-0 will-change-transform"
+      style={`background-image:url('${IMGS.hero}');background-size:cover;background-position:center;filter:blur(3px) brightness(0.3);transform:scale(1.06);`}
+      aria-hidden="true"
+    />
+    <div class="absolute inset-0"
+      style="background:linear-gradient(135deg, rgba(100,20,20,0.75) 0%, rgba(176,48,48,0.5) 100%);"
+      aria-hidden="true"
+    />
     <HojasSVG />
-    <div class="max-w-3xl mx-auto text-center relative z-10 pt-8">
-      <p class="inline-block bg-burdeos/10 text-burdeos font-bold text-sm px-4 py-1.5 rounded-full mb-5">
-        Refuerzo escolar personalizado
+    <div class="relative z-10 text-center px-4 max-w-3xl mx-auto">
+      <p class="inline-block bg-white/15 text-white font-bold text-sm px-4 py-1.5 rounded-full mb-5">
+        Refuerzo escolar personalizado · Jerez de la Frontera
       </p>
-      <h1 class="font-display text-5xl md:text-7xl font-black text-gris mb-5 leading-tight">
-        Aprender <span style="color:#b03030;">a tu ritmo</span>
+      <h1 class="font-display text-6xl md:text-8xl font-black text-white mb-5 leading-tight drop-shadow-xl">
+        Aprender <span style="color:#ffb3b3;">a tu ritmo</span>
       </h1>
-      <p class="text-gris-claro text-xl max-w-xl mx-auto leading-relaxed">
-        Grupos reducidos, profesores especializados y un seguimiento continuo para que cada alumno alcance su máximo potencial.
+      <p class="text-white/80 text-xl max-w-xl mx-auto leading-relaxed">
+        Grupos reducidos, profesores especializados y un seguimiento continuo
+        para que cada alumno alcance su máximo potencial.
       </p>
     </div>
-  </ParallaxSection>
+  </section>
 
-  <!-- ═══════════════════════════════════════════
-       8 SERVICIOS
-  ═══════════════════════════════════════════ -->
-  <section class="py-20 px-4 bg-white">
+  <PaintSplash color="#ffffff" flip={true} />
+
+  <!-- 8 SERVICIOS -->
+  <ScrollReveal bgColor="#ffffff" direction="up" className="py-20 px-4">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-14">
         <p class="text-burdeos font-bold text-sm tracking-widest uppercase mb-2">¿Qué ofrecemos?</p>
         <h2 class="font-display text-4xl font-black text-gris mb-4">Todo lo que necesitas</h2>
-        <p class="text-gris-claro max-w-xl mx-auto">Ocho pilares que hacen de educa2 mucho más que una academia de refuerzo escolar.</p>
+        <p class="text-gris-claro max-w-xl mx-auto">Ocho pilares que hacen de educa2 mucho más que una academia de refuerzo.</p>
       </div>
-
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
         {servicios.map(s => (
-          <ServiceCard
-            title={s.title}
-            description={s.description}
-            icon={s.icon}
-            accent="burdeos"
-          />
+          <ServiceCard title={s.title} description={s.description} icon={s.icon} accent="burdeos" />
         ))}
       </div>
     </div>
-  </section>
+  </ScrollReveal>
 
-  <!-- ═══════════════════════════════════════════
-       POR QUÉ EDUCA2 — Parallax destacado
-  ═══════════════════════════════════════════ -->
-  <ParallaxSection id="clases-diferencial" bgColor="#fff5f5" parallaxIntensity={0.25} className="py-20 px-4">
+  <PaintSplash color="#fff5f5" />
+
+  <!-- POR QUÉ EDUCA2 — imagen difuminada fondo -->
+  <ScrollReveal bgImage={IMGS.est2} direction="right" className="py-24 px-4" minHeight="520px">
     <div class="max-w-5xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-center">
-
-        <!-- Stats lado izquierdo -->
-        <div class="grid grid-cols-2 gap-5">
+        <!-- Stats -->
+        <div class="grid grid-cols-2 gap-4">
           {[
             { num: '+15', label: 'años de experiencia' },
-            { num: '2', label: 'centros en Cádiz' },
+            { num: '1', label: 'centro en Jerez' },
             { num: '< 6', label: 'alumnos por grupo' },
             { num: '100%', label: 'seguimiento familiar' },
-          ].map(stat => (
-            <div class="service-card bg-white rounded-2xl p-5 text-center shadow-sm border border-burdeos/10 opacity-0 translate-y-6">
-              <div class="font-display text-4xl font-black mb-1" style="color:#b03030;">{stat.num}</div>
-              <p class="text-gris-claro text-sm font-semibold">{stat.label}</p>
+          ].map((stat, i) => (
+            <div class="stat-card bg-white/20 backdrop-blur-sm rounded-2xl p-5 text-center
+                        border border-white/30 opacity-0 transition-opacity duration-700"
+                 style={`transition-delay: ${i * 120}ms`}>
+              <div class="font-display text-4xl font-black mb-1 text-white drop-shadow-lg">{stat.num}</div>
+              <p class="text-white/90 text-sm font-semibold">{stat.label}</p>
             </div>
           ))}
         </div>
-
-        <!-- Texto lado derecho -->
+        <!-- Texto -->
         <div>
-          <p class="text-burdeos font-bold text-sm tracking-widest uppercase mb-3">¿Por qué educa2?</p>
-          <h2 class="font-display text-4xl font-black text-gris mb-5 leading-tight">
-            No somos solo una academia
+          <p class="text-white/70 font-bold text-sm tracking-widest uppercase mb-3">¿Por qué educa2?</p>
+          <h2 class="font-display text-4xl font-black text-white mb-5 leading-tight drop-shadow-lg">
+            No somos solo<br/>una academia
           </h2>
-          <p class="text-gris-claro leading-relaxed mb-4">
-            En educa2 combinamos el refuerzo académico con el apoyo psicopedagógico. Nuestros profesores no solo enseñan contenidos: detectan cómo aprende cada alumno y adaptan su metodología.
+          <p class="text-white/80 leading-relaxed mb-4">
+            En educa2 combinamos el refuerzo académico con el apoyo psicopedagógico.
+            Nuestros profesores no solo enseñan: detectan cómo aprende cada alumno
+            y adaptan su metodología.
           </p>
-          <p class="text-gris-claro leading-relaxed mb-7">
-            Trabajamos en coordinación con familias y colegios para garantizar una evolución real y sostenida en el tiempo.
+          <p class="text-white/80 leading-relaxed mb-7">
+            Trabajamos en coordinación con familias y colegios para garantizar
+            una evolución real y sostenida en el tiempo.
           </p>
-          <a href="tel:956062004" class="inline-flex items-center gap-2 bg-burdeos text-white font-bold px-6 py-3 rounded-full hover:bg-burdeos/80 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+          <a href="tel:956062004"
+             class="inline-flex items-center gap-2 bg-white text-burdeos font-bold
+                    px-6 py-3 rounded-full shadow-lg
+                    hover:bg-burdeos hover:text-white hover:-translate-y-0.5
+                    transition-all duration-200">
             📞 Consulta sin compromiso
           </a>
         </div>
       </div>
     </div>
-  </ParallaxSection>
+  </ScrollReveal>
 
-  <!-- ═══════════════════════════════════════════
-       CTA
-  ═══════════════════════════════════════════ -->
-  <section class="py-16 px-4 bg-white text-center">
-    <div class="max-w-xl mx-auto">
+  <PaintSplash color="#f8fdf2" flip={true} />
+
+  <!-- GALERÍA -->
+  <ScrollReveal bgColor="#f8fdf2" direction="up" className="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-4xl font-black text-gris mb-3">Historias de éxito</h2>
+        <p class="text-gris-claro max-w-xl mx-auto">Cada alumno que mejora es nuestra mayor recompensa.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <ImageCard image={IMGS.est1} alt="Estudiante en biblioteca" title="Superar dificultades" description="Con el apoyo adecuado, todo es posible." href="/conocenos" accent="#b03030"/>
+        <ImageCard image={IMGS.est3} alt="Niña estudiando" title="Confianza y autonomía" description="Aprender a aprender de forma independiente." href="/psicopedagogia" accent="#b03030"/>
+        <ImageCard image={IMGS.hero} alt="Niños aprendiendo" title="Trabajo en equipo" description="La colaboración potencia el aprendizaje." href="/conocenos" accent="#b03030"/>
+      </div>
+    </div>
+  </ScrollReveal>
+
+  <PaintSplash color="#b03030" />
+
+  <!-- CTA -->
+  <ScrollReveal bgColor="#fff5f5" direction="up" className="py-16 px-4">
+    <div class="max-w-xl mx-auto text-center">
       <h2 class="font-display text-3xl font-black text-gris mb-4">¿Necesitas refuerzo escolar?</h2>
       <p class="text-gris-claro mb-8">Cuéntanos la situación de tu hijo y te proponemos el plan más adecuado.</p>
       <div class="flex flex-wrap justify-center gap-3">
-        <a href="tel:956062004" class="bg-burdeos text-white font-bold px-8 py-3 rounded-full hover:bg-burdeos/80 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
-          📞 Llamar ahora
-        </a>
-        <a href="/psicopedagogia" class="border-2 border-burdeos text-burdeos font-bold px-8 py-3 rounded-full hover:bg-burdeos hover:text-white transition-all duration-200">
-          Ver Psicopedagogía
-        </a>
+        <a href="tel:956062004" class="bg-burdeos text-white font-bold px-8 py-3 rounded-full hover:bg-burdeos/80 transition-all hover:-translate-y-0.5 hover:shadow-lg">📞 Llamar ahora</a>
+        <a href="/psicopedagogia" class="border-2 border-burdeos text-burdeos font-bold px-8 py-3 rounded-full hover:bg-burdeos hover:text-white transition-all">Ver Psicopedagogía</a>
       </div>
     </div>
-  </section>
+  </ScrollReveal>
 
 </Layout>
+
+
+<script>
+  // Parallax hero
+  const bg = document.getElementById('clases-hero-bg');
+  if (bg) {
+    window.addEventListener('scroll', () => {
+      requestAnimationFrame(() => {
+        bg.style.transform = `scale(1.06) translateY(${window.scrollY * 0.25}px)`;
+      });
+    }, { passive: true });
+  }
+
+  // Reveal tarjetas stats
+  function initStatsReveal() {
+    const cards = document.querySelectorAll<HTMLElement>('.stat-card');
+    const obs = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).style.opacity = '1';
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    cards.forEach(c => obs.observe(c));
+  }
+  initStatsReveal();
+  document.addEventListener('astro:page-load', initStatsReveal);
+</script>

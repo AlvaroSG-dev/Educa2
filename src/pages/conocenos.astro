@@ -59,8 +59,10 @@ import ServiceCard from '../components/ServiceCard.astro';
           { icon: '🌱', title: 'Crecimiento', desc: 'Cada alumno tiene potencial. Nuestra labor es ayudarle a descubrirlo.' },
           { icon: '🔍', title: 'Individualización', desc: 'No hay dos casos iguales. Adaptamos cada intervención a la persona.' },
           { icon: '🏡', title: 'Familia', desc: 'La familia es parte del equipo. La implicamos en todo el proceso.' },
-        ].map(v => (
-          <div class="service-card bg-white/80 rounded-2xl p-7 text-center border border-verde/20 opacity-0 translate-y-6">
+        ].map((v, i) => (
+          <div class="valores-card bg-white/90 rounded-2xl p-7 text-center border border-verde/20 shadow-sm
+                      opacity-0 transition-opacity duration-700"
+               style={`transition-delay: ${i * 150}ms`}>
             <div class="text-4xl mb-4">{v.icon}</div>
             <h3 class="font-bold text-gris text-xl mb-2">{v.title}</h3>
             <p class="text-gris-claro text-sm leading-relaxed">{v.desc}</p>
@@ -82,3 +84,24 @@ import ServiceCard from '../components/ServiceCard.astro';
   </section>
 
 </Layout>
+
+<script>
+  // Reveal observer para las tarjetas de valores
+  function initValoresReveal() {
+    const cards = document.querySelectorAll<HTMLElement>('.valores-card');
+    const obs = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).style.opacity = '1';
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    cards.forEach(c => obs.observe(c));
+  }
+  initValoresReveal();
+  document.addEventListener('astro:page-load', initValoresReveal);
+</script>

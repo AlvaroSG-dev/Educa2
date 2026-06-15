@@ -1,0 +1,60 @@
+---
+/**
+ * ImageCard — Tarjeta con imagen de fondo difuminada, texto encima
+ * y hover que levanta la tarjeta (efecto IONOS)
+ */
+interface Props {
+  image: string;
+  alt: string;
+  title: string;
+  description?: string;
+  href?: string;
+  accent?: string;
+}
+const { image, alt, title, description = '', href = '#', accent = '#8fbc4e' } = Astro.props;
+---
+
+<a
+  href={href}
+  class="image-card group relative overflow-hidden rounded-3xl block
+         transition-all duration-700 ease-out
+         hover:-translate-y-2 hover:shadow-2xl"
+  style="min-height: 280px;"
+>
+  <!-- Imagen de fondo difuminada en hover -->
+  <div
+    class="absolute inset-0 bg-cover bg-center transition-all duration-500
+           group-hover:scale-105"
+    style={`background-image: url('${image}'); filter: brightness(0.55);`}
+    aria-hidden="true"
+    role="img"
+  />
+
+  <!-- Color overlay -->
+  <div
+    class="absolute inset-0 opacity-40 transition-opacity duration-300 group-hover:opacity-60"
+    style={`background: linear-gradient(135deg, ${accent}99 0%, #00000066 100%);`}
+    aria-hidden="true"
+  />
+
+  <!-- Texto -->
+  <div class="relative z-10 p-7 flex flex-col justify-end h-full" style="min-height: 280px;">
+    <h3 class="font-display font-black text-white text-xl mb-2 leading-tight drop-shadow-lg">
+      {title}
+    </h3>
+    {description && (
+      <p class="text-white/80 text-sm leading-relaxed drop-shadow">
+        {description}
+      </p>
+    )}
+    <span class="inline-flex items-center gap-1 mt-3 text-sm font-bold text-white/70
+                 group-hover:text-white group-hover:gap-2 transition-all duration-200">
+      Saber más
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </span>
+  </div>
+
+  <!-- Alt text accesible -->
+  <span class="sr-only">{alt}</span>
+</a>
+

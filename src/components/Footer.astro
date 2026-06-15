@@ -2,8 +2,7 @@
 ---
 
 <footer class="bg-gris text-white relative overflow-hidden">
-  <div class="absolute inset-0 opacity-5">
-    <!-- Subtle leaf pattern background -->
+  <div class="absolute inset-0 opacity-5" aria-hidden="true">
     <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <pattern id="leaf-pattern" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
@@ -15,7 +14,6 @@
   </div>
 
   <div class="relative max-w-6xl mx-auto px-4 py-12">
-    <!-- Logo -->
     <div class="text-center mb-8">
       <div class="inline-flex items-center gap-1 mb-2">
         <span class="font-display text-3xl font-black" style="color:#e87070;">e</span>
@@ -26,9 +24,9 @@
       <p class="text-white/60 text-sm italic mt-1">"La tranquilidad de saber que nuestro hijo va bien."</p>
     </div>
 
-    <!-- Sedes -->
-    <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
-      <div class="bg-white/5 rounded-2xl p-5 text-center hover:bg-white/10 transition-colors">
+    <!-- Única sede: Jerez de la Frontera -->
+    <div class="max-w-sm mx-auto mb-8">
+      <div class="bg-white/5 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors">
         <div class="text-verde text-2xl mb-2">📍</div>
         <h3 class="font-bold text-white mb-1">Jerez de la Frontera</h3>
         <p class="text-white/70 text-sm">Avd. Reino Unido, 4</p>
@@ -37,19 +35,8 @@
           956 06 2004
         </a>
       </div>
-
-      <div class="bg-white/5 rounded-2xl p-5 text-center hover:bg-white/10 transition-colors">
-        <div class="text-verde text-2xl mb-2">📍</div>
-        <h3 class="font-bold text-white mb-1">Puerto Real</h3>
-        <p class="text-white/70 text-sm">Avd. 14 de Abril, 58</p>
-        <a href="tel:956062004" class="inline-flex items-center gap-1.5 mt-3 text-verde-claro font-bold text-sm hover:text-white transition-colors">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-          956 06 2004
-        </a>
-      </div>
     </div>
 
-    <!-- Nav links -->
     <nav class="flex flex-wrap justify-center gap-4 mb-6 text-sm" aria-label="Navegación del pie de página">
       <a href="/" class="text-white/50 hover:text-verde-claro transition-colors">Inicio</a>
       <a href="/conocenos" class="text-white/50 hover:text-verde-claro transition-colors">Conócenos</a>

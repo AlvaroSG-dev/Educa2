@@ -1,0 +1,39 @@
+---
+interface Props {
+  color?: string;
+  flip?: boolean;
+}
+const { color = '#8fbc4e', flip = false } = Astro.props;
+---
+
+<!--
+  Divisor SVG tipo pincelada entre secciones.
+  Estático (sin parallax) para evitar huecos de layout.
+-->
+<div
+  class="paint-splash-wrap relative w-full overflow-hidden leading-none pointer-events-none"
+  style={`height: 80px; margin-bottom: -2px; ${flip ? 'transform: scaleY(-1);' : ''}`}
+  aria-hidden="true"
+>
+  <svg
+    viewBox="0 0 1440 80"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="w-full h-full"
+  >
+    <path
+      d="
+        M0,40
+        C60,10 120,65 200,38
+        C280,12 340,58 420,35
+        C500,12 560,60 640,38
+        C720,16 780,58 860,38
+        C940,18 1000,60 1080,38
+        C1160,16 1220,58 1300,38
+        C1360,22 1400,52 1440,38
+        L1440,80 L0,80 Z
+      "
+      fill={color}
+    />
+  </svg>
+</div>
