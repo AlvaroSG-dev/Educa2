@@ -5,7 +5,41 @@ Arquitectura multi-página, efectos parallax con Vanilla JS y transiciones de p�
 
 ---
 
-## 🚀 Instalación y arranque
+## �️ Gestión de Imágenes
+
+Se ha implementado un sistema centralizado para gestionar las imágenes del proyecto. Esto permite cambiar una URL o un texto alternativo en un solo lugar y que se aplique en toda la web.
+
+### Cómo añadir una imagen nueva
+1. Edita el archivo [src/data/images.ts](src/data/images.ts).
+2. Añade un nuevo par clave-valor al objeto `IMAGES_CATALOG`.
+
+### Uso del componente CentralImage
+El componente [src/components/CentralImage.astro](src/components/CentralImage.astro) facilita el uso de estas imágenes y añade funcionalidades de filtrado y SEO.
+
+```astro
+---
+import CentralImage from '../components/CentralImage.astro';
+---
+
+<!-- Uso básico con ID del catálogo -->
+<CentralImage id="home_hero" className="rounded-xl shadow" />
+
+<!-- Uso como fondo (Hero con Parallax) -->
+<CentralImage 
+  id="logo_hero" 
+  isBackground={true} 
+  blur={true} 
+  brightness={0.4} 
+  scale={1.1}
+/>
+
+<!-- Uso con URL manual (si no está en el catálogo) -->
+<CentralImage src="https://..." alt="Descripción" />
+```
+
+---
+
+## �🚀 Instalación y arranque
 
 ### 1. Requisitos previos
 - Node.js **18+**

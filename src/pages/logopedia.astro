@@ -5,13 +5,8 @@ import ServiceCard from '../components/ServiceCard.astro';
 import ImageCard from '../components/ImageCard.astro';
 import PaintSplash from '../components/PaintSplash.astro';
 import HojasSVG from '../components/HojasSVG.astro';
-
-const IMGS = {
-  hero:    'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=1600&q=85&auto=format&fit=crop',
-  nino1:   'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=85&auto=format&fit=crop',
-  nino2:   'https://images.unsplash.com/photo-1571260898995-4ae0a0d5bd79?w=1600&q=85&auto=format&fit=crop',
-  nino3:   'https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&q=85&auto=format&fit=crop',
-};
+import CentralImage from '../components/CentralImage.astro';
+import { IMAGES_CATALOG } from '../data/images';
 
 const servicios = [
   { icon: 'record_voice_over', title: 'Trastornos del Habla', description: 'Intervención en dislalia, disfemia (tartamudez), disartria y otros trastornos que afectan a la articulación y fluidez del habla.' },
@@ -28,9 +23,16 @@ const servicios = [
 
   <!-- HERO con imagen difuminada + parallax -->
   <section class="relative min-h-[65vh] flex items-center justify-center overflow-hidden pt-20">
-    <div id="logo-hero-bg" class="absolute inset-0 will-change-transform"
-      style={`background-image:url('${IMGS.hero}');background-size:cover;background-position:center;filter:blur(3px) brightness(0.3);transform:scale(1.06);`}
-      aria-hidden="true"
+    <CentralImage 
+      id="logo_hero" 
+      containerId="logo-hero-bg"
+      isBackground={true} 
+      className="will-change-transform"
+      blur={true}
+      brightness={0.3}
+      scale={1.06}
+      fetchpriority="high"
+      loading="eager"
     />
     <div class="absolute inset-0 opacity-60"
       style="background:linear-gradient(135deg,#7b3f9e99 0%,#4a1a7a88 100%);"
@@ -72,7 +74,7 @@ const servicios = [
   <PaintSplash color="#f3eeff" />
 
   <!-- METODOLOGÍA con imagen difuminada de fondo -->
-  <ScrollReveal bgImage={IMGS.nino2} direction="left" className="py-24 px-4" minHeight="480px">
+  <ScrollReveal bgImage={IMAGES_CATALOG.logo_nino2.src} direction="left" className="py-24 px-4" minHeight="480px">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-12">
         <h2 class="font-display text-4xl font-black text-white mb-4 drop-shadow-lg">Nuestra metodología</h2>
@@ -111,9 +113,9 @@ const servicios = [
         <p class="text-gris-claro max-w-xl mx-auto">Cada progreso, por pequeño que sea, es un gran logro para toda la familia.</p>
       </div>
       <div class="grid md:grid-cols-3 gap-5">
-        <ImageCard image={IMGS.nino1} alt="Niño aprendiendo" title="Primeros avances" description="Cada sesión cuenta para construir confianza." href="/conocenos" accent="#7b3f9e"/>
-        <ImageCard image={IMGS.hero} alt="Niño leyendo" title="Leer con confianza" description="Superando las barreras del lenguaje escrito." href="/conocenos" accent="#7b3f9e"/>
-        <ImageCard image={IMGS.nino3} alt="Niños felices" title="Resultados reales" description="Familias satisfechas con el progreso obtenido." href="/conocenos" accent="#7b3f9e"/>
+        <ImageCard image={IMAGES_CATALOG.logo_nino1.src} alt={IMAGES_CATALOG.logo_nino1.alt} title="Primeros avances" description="Cada sesión cuenta para construir confianza." href="/conocenos" accent="#7b3f9e"/>
+        <ImageCard image={IMAGES_CATALOG.logo_hero.src} alt={IMAGES_CATALOG.logo_hero.alt} title="Leer con confianza" description="Superando las barreras del lenguaje escrito." href="/conocenos" accent="#7b3f9e"/>
+        <ImageCard image={IMAGES_CATALOG.logo_nino3.src} alt={IMAGES_CATALOG.logo_nino3.alt} title="Resultados reales" description="Familias satisfechas con el progreso obtenido." href="/conocenos" accent="#7b3f9e"/>
       </div>
     </div>
   </ScrollReveal>

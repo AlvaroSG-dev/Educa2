@@ -1,0 +1,77 @@
+---
+import { IMAGES_CATALOG, type ImageId } from '../data/images';
+
+interface Props {
+  id?: ImageId;
+  containerId?: string;
+  src?: string;
+  alt?: string;
+  className?: string;
+  style?: string;
+  isBackground?: boolean;
+  backgroundPosition?: string;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  // Props adicionales para efectos específicos del proyecto
+  blur?: boolean;
+  brightness?: number;
+  scale?: number;
+}
+
+const { 
+  id, 
+  containerId,
+  src: manualSrc, 
+  alt: manualAlt, 
+  className = '', 
+  style = '', 
+  isBackground = false,
+  backgroundPosition = 'center',
+  loading = 'lazy',
+  fetchpriority = 'auto',
+  blur = false,
+  brightness = 1,
+  scale = 1
+} = Astro.props;
+
+// Obtener datos del catálogo si se proporciona un ID
+const catalogImage = id ? IMAGES_CATALOG[id] : null;
+
+// Priorizar props manuales sobre el catálogo
+const finalSrc = manualSrc || catalogImage?.src || '';
+const finalAlt = manualAlt || catalogImage?.alt || '';
+
+// Lógica de procesamiento de filtros para imágenes de fondo o especiales
+const filterStyles = [
+  blur ? 'blur(3px)' : '',
+  brightness !== 1 ? `brightness(${brightness})` : '',
+].filter(Boolean).join(' ');
+
+const transformStyles = scale !== 1 ? `scale(${scale})` : '';
+
+// Si es para fondo (div con bg-image)
+const bgStyle = isBackground 
+  ? `background-image: url('${finalSrc}'); background-size: cover; background-position: ${backgroundPosition}; ${filterStyles ? `filter: ${filterStyles};` : ''} ${transformStyles ? `transform: ${transformStyles};` : ''} ${style}`
+  : style;
+---
+
+{isBackground ? (
+  <div 
+    id={containerId}
+    class={`absolute inset-0 ${className}`} 
+    style={bgStyle}
+    aria-hidden="true"
+  >
+    <slot />
+  </div>
+) : (
+  <img 
+    id={containerId}
+    src={finalSrc} 
+    alt={finalAlt} 
+    class={className} 
+    style={style}
+    loading={loading}
+    fetchpriority={fetchpriority}
+  />
+)}

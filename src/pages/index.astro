@@ -4,22 +4,8 @@ import HojasSVG from '../components/HojasSVG.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import ScrollReveal from '../components/ScrollReveal.astro';
 import ImageCard from '../components/ImageCard.astro';
-
-// Imágenes de Unsplash (licencia libre)
-const IMGS = {
-  // Hero: niña leyendo en un espacio educativo luminoso
-  logoHero:  'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&q=85&auto=format&fit=crop',
-  // Logopedia: logopeda trabajando con niño
-  ninos1:    'https://images.unsplash.com/photo-1571260898995-4ae0a0d5bd79?w=1600&q=85&auto=format&fit=crop',
-  // Galería: niña leyendo un libro (cálida)
-  ninos2:    'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&q=85&auto=format&fit=crop',
-  // Galería: niño estudiando concentrado
-  ninos4:    'https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=800&q=85&auto=format&fit=crop',
-  // Galería: niños felices aprendiendo juntos
-  ninos5:    'https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&q=85&auto=format&fit=crop',
-  // Clases particulares: profesora con alumnos en aula
-  clases:    'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&q=85&auto=format&fit=crop',
-};
+import CentralImage from '../components/CentralImage.astro';
+import { IMAGES_CATALOG } from '../data/images';
 ---
 
 <Layout
@@ -35,17 +21,17 @@ const IMGS = {
     style="background: linear-gradient(160deg,#0e1f0a 0%,#162a0c 100%);"
   >
     <!-- Imagen de fondo con parallax -->
-    <div
-      id="hero-bg"
-      class="absolute inset-0 will-change-transform"
-      style={`
-        background-image: url('${IMGS.logoHero}');
-        background-size: cover;
-        background-position: center 30%;
-        filter: brightness(0.38) saturate(0.8);
-        transform: scale(1.06);
-      `}
-      aria-hidden="true"
+    <CentralImage 
+      id="home_hero"
+      containerId="hero-bg"
+      isBackground={true}
+      className="will-change-transform"
+      backgroundPosition="center 30%"
+      brightness={0.38}
+      scale={1.06}
+      style="filter: brightness(0.38) saturate(0.8);"
+      fetchpriority="high"
+      loading="eager"
     />
     <!-- Overlay gradiente verde oscuro —> verde medio para legibilidad -->
     <div class="absolute inset-0"
@@ -142,7 +128,7 @@ const IMGS = {
        SECCIÓN 2 — LOGOPEDIA (imagen difuminada + scroll reveal)
   ══════════════════════════════════════════ -->
   <ScrollReveal
-    bgImage={IMGS.ninos1}
+    bgImage={IMAGES_CATALOG.home_ninos_talking.src}
     bgOverlay="linear-gradient(135deg, rgba(60,20,90,0.72) 0%, rgba(123,63,158,0.5) 50%, rgba(30,10,50,0.6) 100%)"
     direction="left"
     className="py-24 px-4"
@@ -213,8 +199,8 @@ const IMGS = {
       <div class="grid md:grid-cols-3 gap-5">
         <div class="reveal-child" data-reveal-delay="100">
           <ImageCard
-            image={IMGS.ninos2}
-            alt="Niño leyendo un libro"
+            image={IMAGES_CATALOG.home_reading_warm.src}
+            alt={IMAGES_CATALOG.home_reading_warm.alt}
             title="Lectura y comprensión"
             description="Fomentamos el amor por la lectura desde pequeños."
             href="/clases-particulares"
@@ -223,8 +209,8 @@ const IMGS = {
         </div>
         <div class="reveal-child" data-reveal-delay="250">
           <ImageCard
-            image={IMGS.ninos4}
-            alt="Niño estudiando concentrado"
+            image={IMAGES_CATALOG.home_studying.src}
+            alt={IMAGES_CATALOG.home_studying.alt}
             title="Concentración y esfuerzo"
             description="Técnicas de estudio adaptadas a cada alumno."
             href="/psicopedagogia"
@@ -233,8 +219,8 @@ const IMGS = {
         </div>
         <div class="reveal-child" data-reveal-delay="400">
           <ImageCard
-            image={IMGS.ninos5}
-            alt="Niños felices aprendiendo"
+            image={IMAGES_CATALOG.home_happy_kids.src}
+            alt={IMAGES_CATALOG.home_happy_kids.alt}
             title="Aprender con alegría"
             description="El aprendizaje es más efectivo cuando es disfrutable."
             href="/conocenos"
@@ -251,7 +237,7 @@ const IMGS = {
        SECCIÓN 4 — CLASES PARTICULARES (imagen difuminada + scroll reveal)
   ══════════════════════════════════════════ -->
   <ScrollReveal
-    bgImage={IMGS.clases}
+    bgImage={IMAGES_CATALOG.home_classes.src}
     bgOverlay="linear-gradient(135deg, rgba(100,20,20,0.72) 0%, rgba(176,48,48,0.5) 50%, rgba(50,10,10,0.65) 100%)"
     direction="right"
     className="py-24 px-4"
