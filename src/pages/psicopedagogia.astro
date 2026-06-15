@@ -34,12 +34,12 @@ import ServiceCard from '../components/ServiceCard.astro';
         <h2 class="font-display text-4xl font-black text-gris mb-4">¿Qué abarcamos?</h2>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <ServiceCard icon="🧩" title="Dificultades de aprendizaje" description="Dislexia, discalculia, disgrafía y otros trastornos específicos del aprendizaje." accent="verde" />
-        <ServiceCard icon="⚡" title="TDAH" description="Evaluación y orientación para niños con déficit de atención e hiperactividad." accent="verde" />
-        <ServiceCard icon="🌟" title="Altas capacidades" description="Detección e intervención en niños con capacidades superiores a la media." accent="verde" />
-        <ServiceCard icon="📊" title="Evaluación psicológica" description="Informe psicopedagógico completo con orientaciones para familia y colegio." accent="verde" />
-        <ServiceCard icon="🎯" title="Orientación escolar" description="Asesoramiento sobre itinerarios académicos y decisiones educativas." accent="verde" />
-        <ServiceCard icon="👨‍👩‍👧" title="Orientación familiar" description="Pautas y herramientas para que las familias acompañen mejor a sus hijos en casa." accent="verde" />
+        <ServiceCard icon="extension" title="Dificultades de aprendizaje" description="Dislexia, discalculia, disgrafía y otros trastornos específicos del aprendizaje." accent="verde" />
+        <ServiceCard icon="bolt" title="TDAH" description="Evaluación y orientación para niños con déficit de atención e hiperactividad." accent="verde" />
+        <ServiceCard icon="stars" title="Altas capacidades" description="Detección e intervención en niños con capacidades superiores a la media." accent="verde" />
+        <ServiceCard icon="assessment" title="Evaluación psicológica" description="Informe psicopedagógico completo con orientaciones para familia y colegio." accent="verde" />
+        <ServiceCard icon="track_changes" title="Orientación escolar" description="Asesoramiento sobre itinerarios académicos y decisiones educativas." accent="verde" />
+        <ServiceCard icon="family_restroom" title="Orientación familiar" description="Pautas y herramientas para que las familias acompañen mejor a sus hijos en casa." accent="verde" />
       </div>
     </div>
   </section>
@@ -53,14 +53,18 @@ import ServiceCard from '../components/ServiceCard.astro';
       </div>
       <div class="grid md:grid-cols-4 gap-6">
         {[
-          { num: '01', icon: '🔎', title: 'Primera consulta', desc: 'Recogemos información sobre la situación del alumno y las preocupaciones de la familia.' },
-          { num: '02', icon: '📋', title: 'Evaluación', desc: 'Aplicamos pruebas estandarizadas y observación directa para obtener un diagnóstico preciso.' },
-          { num: '03', icon: '🗺️', title: 'Plan de intervención', desc: 'Diseñamos un plan personalizado con objetivos claros y medibles.' },
-          { num: '04', icon: '📈', title: 'Seguimiento', desc: 'Revisamos el progreso periódicamente e informamos a la familia con transparencia.' },
+          { num: '01', icon: 'quiz', title: 'Primera consulta', desc: 'Recogemos información sobre la situación del alumno y las preocupaciones de la familia.' },
+          { num: '02', icon: 'fact_check', title: 'Evaluación', desc: 'Aplicamos pruebas estandarizadas y observación directa para obtener un diagnóstico preciso.' },
+          { num: '03', icon: 'map', title: 'Plan de intervención', desc: 'Diseñamos un plan personalizado con objetivos claros y medibles.' },
+          { num: '04', icon: 'trending_up', title: 'Seguimiento', desc: 'Revisamos el progreso periódicamente e informamos a la familia con transparencia.' },
         ].map(step => (
           <div class="service-card text-center bg-white/80 rounded-2xl p-5 border border-verde/20 opacity-0 translate-y-6">
             <div class="font-display text-4xl font-black mb-1 text-verde opacity-30">{step.num}</div>
-            <div class="text-3xl mb-3">{step.icon}</div>
+            <div class="text-3xl mb-3">
+              <span class="material-symbols-outlined text-4xl text-verde">
+                {step.icon}
+              </span>
+            </div>
             <h3 class="font-bold text-gris mb-2">{step.title}</h3>
             <p class="text-gris-claro text-sm leading-relaxed">{step.desc}</p>
           </div>
@@ -75,8 +79,8 @@ import ServiceCard from '../components/ServiceCard.astro';
       <h2 class="font-display text-3xl font-black text-gris mb-4">¿Tienes dudas sobre tu hijo?</h2>
       <p class="text-gris-claro mb-8">Una consulta inicial no compromete a nada y puede marcar el inicio de un gran cambio.</p>
       <div class="flex flex-wrap justify-center gap-3">
-        <a href="tel:956062004" class="bg-verde text-white font-bold px-8 py-3 rounded-full hover:bg-verde-oscuro transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
-          📞 Pedir cita
+        <a href="tel:956062004" class="bg-verde text-white font-bold px-8 py-3 rounded-full hover:bg-verde-oscuro transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg inline-flex items-center gap-2">
+          <span class="material-symbols-outlined">call</span> Pedir cita
         </a>
         <a href="/logopedia" class="border-2 border-verde text-verde font-bold px-8 py-3 rounded-full hover:bg-verde hover:text-white transition-all duration-200">
           Ver Logopedia

@@ -42,10 +42,10 @@ import ServiceCard from '../components/ServiceCard.astro';
         </p>
       </div>
       <div class="grid grid-cols-2 gap-4">
-        <ServiceCard icon="❤️" title="Trato cercano" description="Cada familia recibe atención personalizada desde el primer contacto." accent="verde" />
-        <ServiceCard icon="🔬" title="Rigor profesional" description="Métodos avalados por la evidencia científica y actualizados." accent="verde" />
-        <ServiceCard icon="🤝" title="Coordinación" description="Trabajamos en red con colegios, familias y otros especialistas." accent="verde" />
-        <ServiceCard icon="📈" title="Seguimiento real" description="Informamos a las familias del progreso de forma continua." accent="verde" />
+        <ServiceCard icon="favorite" title="Trato cercano" description="Cada familia recibe atención personalizada desde el primer contacto." accent="verde" />
+        <ServiceCard icon="psychology" title="Rigor profesional" description="Métodos avalados por la evidencia científica y actualizados." accent="verde" />
+        <ServiceCard icon="handshake" title="Coordinación" description="Trabajamos en red con colegios, familias y otros especialistas." accent="verde" />
+        <ServiceCard icon="trending_up" title="Seguimiento real" description="Informamos a las familias del progreso de forma continua." accent="verde" />
       </div>
     </div>
   </section>
@@ -56,14 +56,18 @@ import ServiceCard from '../components/ServiceCard.astro';
       <h2 class="font-display text-4xl font-black text-gris mb-12">Nuestros valores</h2>
       <div class="grid md:grid-cols-3 gap-7">
         {[
-          { icon: '🌱', title: 'Crecimiento', desc: 'Cada alumno tiene potencial. Nuestra labor es ayudarle a descubrirlo.' },
-          { icon: '🔍', title: 'Individualización', desc: 'No hay dos casos iguales. Adaptamos cada intervención a la persona.' },
-          { icon: '🏡', title: 'Familia', desc: 'La familia es parte del equipo. La implicamos en todo el proceso.' },
+          { icon: 'potted_plant', title: 'Crecimiento', desc: 'Cada alumno tiene potencial. Nuestra labor es ayudarle a descubrirlo.' },
+          { icon: 'person_search', title: 'Individualización', desc: 'No hay dos casos iguales. Adaptamos cada intervención a la persona.' },
+          { icon: 'family_restroom', title: 'Familia', desc: 'La familia es parte del equipo. La implicamos en todo el proceso.' },
         ].map((v, i) => (
           <div class="valores-card bg-white/90 rounded-2xl p-7 text-center border border-verde/20 shadow-sm
                       opacity-0 transition-opacity duration-700"
                style={`transition-delay: ${i * 150}ms`}>
-            <div class="text-4xl mb-4">{v.icon}</div>
+            <div class="text-4xl mb-4">
+              <span class="material-symbols-outlined text-4xl text-verde">
+                {v.icon}
+              </span>
+            </div>
             <h3 class="font-bold text-gris text-xl mb-2">{v.title}</h3>
             <p class="text-gris-claro text-sm leading-relaxed">{v.desc}</p>
           </div>
@@ -78,7 +82,7 @@ import ServiceCard from '../components/ServiceCard.astro';
       <h2 class="font-display text-3xl font-black text-gris mb-4">Visítanos</h2>
       <p class="text-gris-claro mb-8">Dos centros a tu disposición en la provincia de Cádiz.</p>
       <a href="tel:956062004" class="inline-flex items-center gap-2 bg-verde text-white font-bold px-8 py-3 rounded-full hover:bg-verde-oscuro transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
-        📞 956 06 2004
+        <span class="material-symbols-outlined text-base">call</span> 956 06 2004
       </a>
     </div>
   </section>

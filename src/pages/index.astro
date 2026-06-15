@@ -96,7 +96,7 @@ const IMGS = {
         <a href="/conocenos"
            class="bg-white/80 text-gris font-semibold px-5 py-3 rounded-full
                   hover:bg-white transition-all duration-200">
-          Conócenos →
+          Conócenos 
         </a>
       </div>
     </div>
@@ -105,9 +105,7 @@ const IMGS = {
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1
                 text-white/60 animate-bounce">
       <span class="text-xs font-semibold tracking-widest uppercase">Descubre</span>
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M7 10l5 5 5-5"/>
-      </svg>
+      <span class="material-symbols-outlined text-xl">expand_more</span>
     </div>
   </section>
 
@@ -130,10 +128,10 @@ const IMGS = {
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
-        <div class="reveal-child h-full" data-reveal-delay="100"><ServiceCard title="Conócenos" description="Quiénes somos y cómo trabajamos cada día." icon="🌱" href="/conocenos" accent="verde"/></div>
-        <div class="reveal-child h-full" data-reveal-delay="200"><ServiceCard title="Psicopedagogía" description="Evaluación, diagnóstico e intervención en dificultades del aprendizaje." icon="🧠" href="/psicopedagogia" accent="verde"/></div>
-        <div class="reveal-child h-full" data-reveal-delay="300"><ServiceCard title="Logopedia" description="Prevención y tratamiento de trastornos del habla, la voz y el lenguaje." icon="💬" href="/logopedia" accent="morado"/></div>
-        <div class="reveal-child h-full" data-reveal-delay="400"><ServiceCard title="Clases Particulares" description="Refuerzo personalizado con profesores especializados para todos los niveles." icon="📚" href="/clases-particulares" accent="burdeos"/></div>
+        <div class="reveal-child h-full" data-reveal-delay="100"><ServiceCard title="Conócenos" description="Quiénes somos y cómo trabajamos cada día." icon="potted_plant" href="/conocenos" accent="verde"/></div>
+        <div class="reveal-child h-full" data-reveal-delay="200"><ServiceCard title="Psicopedagogía" description="Evaluación, diagnóstico e intervención en dificultades del aprendizaje." icon="psychology" href="/psicopedagogia" accent="verde"/></div>
+        <div class="reveal-child h-full" data-reveal-delay="300"><ServiceCard title="Logopedia" description="Prevención y tratamiento de trastornos del habla, la voz y el lenguaje." icon="forum" href="/logopedia" accent="morado"/></div>
+        <div class="reveal-child h-full" data-reveal-delay="400"><ServiceCard title="Clases Particulares" description="Refuerzo personalizado con profesores especializados para todos los niveles." icon="school" href="/clases-particulares" accent="burdeos"/></div>
       </div>
     </div>
   </ScrollReveal>
@@ -168,24 +166,28 @@ const IMGS = {
                     px-7 py-3 rounded-full shadow-lg
                     hover:bg-morado hover:text-white hover:-translate-y-0.5
                     transition-all duration-200">
-            Ver servicios de Logopedia →
+            Ver servicios de Logopedia <span class="material-symbols-outlined text-base">arrow_forward</span>
           </a>
         </div>
 
         <!-- Grid de 4 áreas -->
         <div class="grid grid-cols-2 gap-4">
           {[
-            { icon: '🗣️', label: 'Trastornos del habla' },
-            { icon: '👂', label: 'Trastornos de la audición' },
-            { icon: '🎵', label: 'Perturbaciones de la voz' },
-            { icon: '📝', label: 'Alteraciones del lenguaje' },
+            { icon: 'record_voice_over', label: 'Trastornos del habla' },
+            { icon: 'hearing', label: 'Trastornos de la audición' },
+            { icon: 'settings_voice', label: 'Perturbaciones de la voz' },
+            { icon: 'description', label: 'Alteraciones del lenguaje' },
           ].map((item, i) => (
             <div class="reveal-child bg-white/20 backdrop-blur-sm rounded-2xl p-5
                         border border-white/30 text-center
                         hover:bg-white/30 transition-all duration-300
                         hover:-translate-y-1 hover:shadow-lg"
                  data-reveal-delay={String(i * 120)}>
-              <div class="text-3xl mb-2">{item.icon}</div>
+              <div class="text-3xl mb-2">
+                <span class="material-symbols-outlined text-4xl text-white">
+                  {item.icon}
+                </span>
+              </div>
               <p class="font-semibold text-white text-sm drop-shadow">{item.label}</p>
             </div>
           ))}
@@ -272,21 +274,25 @@ const IMGS = {
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
         {[
-          { icon: '👥', label: 'Grupos reducidos' },
-          { icon: '🎓', label: 'Profesores especializados' },
-          { icon: '🌍', label: 'Clases de idiomas' },
-          { icon: '📐', label: 'Todas las materias' },
-          { icon: '🔬', label: 'Seg. psicopedagógico' },
-          { icon: '📋', label: 'Prep. de pruebas' },
-          { icon: '🏠', label: 'Clases a domicilio' },
-          { icon: '🎒', label: 'Todos los niveles' },
+          { icon: 'groups', label: 'Grupos reducidos' },
+          { icon: 'school', label: 'Profesores especializados' },
+          { icon: 'language', label: 'Clases de idiomas' },
+          { icon: 'square_foot', label: 'Todas las materias' },
+          { icon: 'psychology', label: 'Seg. psicopedagógico' },
+          { icon: 'assignment', label: 'Prep. de pruebas' },
+          { icon: 'home', label: 'Clases a domicilio' },
+          { icon: 'backpack', label: 'Todos los niveles' },
         ].map((item, i) => (
           <div class="reveal-child bg-white/20 backdrop-blur-sm rounded-2xl p-4
                       border border-white/30 text-center
                       hover:bg-white/30 hover:-translate-y-1 hover:shadow-lg
                       transition-all duration-300"
                data-reveal-delay={String(50 + i * 80)}>
-            <div class="text-2xl mb-1.5">{item.icon}</div>
+            <div class="text-2xl mb-1.5 line-height-0">
+              <span class="material-symbols-outlined text-3xl text-white">
+                {item.icon}
+              </span>
+            </div>
             <p class="font-semibold text-white text-xs drop-shadow">{item.label}</p>
           </div>
         ))}
@@ -298,7 +304,7 @@ const IMGS = {
                   px-8 py-3 rounded-full shadow-lg
                   hover:bg-burdeos hover:text-white hover:-translate-y-0.5
                   transition-all duration-200">
-          Ver todos los servicios →
+          Ver todos los servicios <span class="material-symbols-outlined text-base">arrow_forward</span>
         </a>
       </div>
     </div>
@@ -326,7 +332,7 @@ const IMGS = {
         <a href="tel:956062004"
            class="bg-white text-verde-oscuro font-bold px-8 py-3 rounded-full
                   hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200">
-          📞 956 06 2004
+          Llamar ahora
         </a>
         <a href="/conocenos"
            class="border-2 border-white text-white font-bold px-8 py-3 rounded-full
