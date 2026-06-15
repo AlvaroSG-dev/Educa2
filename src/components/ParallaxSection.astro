@@ -58,7 +58,7 @@ const {
         if (rect.bottom < 0 || rect.top > viewH) return;
         const progress = (viewH - rect.top) / (viewH + rect.height);
         const offset = (progress - 0.5) * intensity * 200;
-        bg.style.transform = `translateY(${offset}px)`;
+        bg!.style.transform = `translateY(${offset}px)`;
       }
 
       window.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
