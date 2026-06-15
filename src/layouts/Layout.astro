@@ -1,6 +1,7 @@
 ---
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import WhatsAppBubble from '../components/wasap.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -78,5 +79,9 @@ const {
       <slot />
     </main>
     <Footer />
+    <WhatsAppBubble
+      phone="34610607227"
+      message="Hola, me gustaría pedir información sobre vuestros servicios."
+    />
   </body>
 </html>
