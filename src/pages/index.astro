@@ -105,7 +105,7 @@ const IMGS = {
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1
                 text-white/60 animate-bounce">
       <span class="text-xs font-semibold tracking-widest uppercase">Descubre</span>
-      <span class="material-symbols-outlined text-xl">expand_more</span>
+      <span class="material-symbols-outlined text-xl" aria-hidden="true">expand_more</span>
     </div>
   </section>
 
@@ -166,7 +166,7 @@ const IMGS = {
                     px-7 py-3 rounded-full shadow-lg
                     hover:bg-morado hover:text-white hover:-translate-y-0.5
                     transition-all duration-200">
-            Ver servicios de Logopedia <span class="material-symbols-outlined text-base">arrow_forward</span>
+            Ver servicios de Logopedia <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
           </a>
         </div>
 
@@ -184,7 +184,7 @@ const IMGS = {
                         hover:-translate-y-1 hover:shadow-lg"
                  data-reveal-delay={String(i * 120)}>
               <div class="text-3xl mb-2">
-                <span class="material-symbols-outlined text-4xl text-white">
+                <span class="material-symbols-outlined text-4xl text-white" aria-hidden="true">
                   {item.icon}
                 </span>
               </div>
@@ -289,7 +289,7 @@ const IMGS = {
                       transition-all duration-300"
                data-reveal-delay={String(50 + i * 80)}>
             <div class="text-2xl mb-1.5 line-height-0">
-              <span class="material-symbols-outlined text-3xl text-white">
+              <span class="material-symbols-outlined text-3xl text-white" aria-hidden="true">
                 {item.icon}
               </span>
             </div>
@@ -304,7 +304,7 @@ const IMGS = {
                   px-8 py-3 rounded-full shadow-lg
                   hover:bg-burdeos hover:text-white hover:-translate-y-0.5
                   transition-all duration-200">
-          Ver todos los servicios <span class="material-symbols-outlined text-base">arrow_forward</span>
+          Ver todos los servicios <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
         </a>
       </div>
     </div>
