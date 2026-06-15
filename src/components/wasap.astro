@@ -1,0 +1,69 @@
+---
+interface Props {
+  phone: string;       // Número con prefijo país, sin espacios ni +. Ej: "34956062004"
+  message?: string;    // Mensaje predefinido (opcional)
+}
+
+const { phone, message = '' } = Astro.props;
+
+const href = message
+  ? `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
+  : `https://wa.me/${phone}`;
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="wa-bubble"
+  aria-label="Contáctanos por WhatsApp"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-hidden="true">
+    <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.413A9.953 9.953 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2Zm5.093 13.71c-.217.61-1.272 1.168-1.74 1.21-.445.04-.862.2-2.9-.604-2.446-.966-4.017-3.45-4.14-3.61-.12-.16-.98-1.305-.98-2.49 0-1.183.62-1.766.84-2.008.218-.24.476-.3.634-.3l.456.008c.146.007.342-.055.535.41.2.48.68 1.657.74 1.778.06.12.1.26.02.42-.08.16-.12.26-.24.4-.12.14-.25.315-.36.423-.12.12-.245.25-.105.49.14.24.62 1.022 1.33 1.654.913.812 1.683 1.063 1.922 1.183.238.12.377.1.516-.06.14-.16.6-.7.76-.94.16-.24.32-.2.54-.12.218.08 1.38.65 1.618.768.238.12.397.18.456.28.06.1.06.58-.157 1.19Z"/>
+  </svg>
+</a>
+
+<style>
+  .wa-bubble {
+    position: fixed;
+    bottom: 1.75rem;
+    right: 1.75rem;
+    z-index: 9999;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25d366;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .wa-bubble:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.6);
+  }
+
+  .wa-bubble:active {
+    transform: scale(0.96);
+  }
+
+  /* Pulso suave para llamar la atención */
+  .wa-bubble::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #25d366;
+    animation: wa-pulse 2.8s ease-out infinite;
+    z-index: -1;
+  }
+
+  @keyframes wa-pulse {
+    0%   { transform: scale(1);   opacity: 0.6; }
+    70%  { transform: scale(1.5); opacity: 0;   }
+    100% { transform: scale(1.5); opacity: 0;   }
+  }
+</style>
