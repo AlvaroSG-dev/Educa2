@@ -10,7 +10,7 @@ interface Props {
 const {
   title,
   description = '',
-  icon = '✦',
+  icon = 'star',
   href,
   accent = 'verde',
 } = Astro.props;
@@ -37,8 +37,10 @@ const Tag = href ? 'a' : 'div';
     ${href ? 'hover:-translate-y-1 hover:shadow-lg cursor-pointer' : ''}
   `}
 >
-  <div class={`w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-4 ${iconColors[accent]}`}>
-    {icon}
+  <div class={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${iconColors[accent]}`}>
+    <span class="material-symbols-outlined text-2xl">
+      {icon}
+    </span>
   </div>
   <h3 class="font-bold text-gris text-lg mb-2 leading-snug">{title}</h3>
   {description && (
@@ -46,7 +48,7 @@ const Tag = href ? 'a' : 'div';
   )}
   {href && (
     <span class="inline-flex items-center gap-1 mt-auto pt-3 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-200" style={`color: var(--tw-${accent})`}>
-      Saber más →
+      Saber más <span class="material-symbols-outlined text-base">arrow_forward</span>
     </span>
   )}
 </Tag>

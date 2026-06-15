@@ -14,14 +14,14 @@ const IMGS = {
 };
 
 const servicios = [
-  { icon: '👥', title: 'Grupos reducidos', description: 'Clases con pocos alumnos para garantizar la atención individualizada que cada estudiante necesita.' },
-  { icon: '🎓', title: 'Profesores especializados', description: 'Equipo docente con formación específica en cada materia y en técnicas de apoyo al aprendizaje.' },
-  { icon: '🌍', title: 'Clases de idiomas', description: 'Inglés, francés y otros idiomas con metodología comunicativa orientada a exámenes oficiales.' },
-  { icon: '📐', title: 'Todas las materias', description: 'Desde matemáticas y lengua hasta ciencias sociales, física o química. Cubrimos todo el currículo.' },
-  { icon: '🔬', title: 'Seguimiento psicopedagógico', description: 'Control continuo del proceso de aprendizaje para detectar dificultades y adaptar la metodología.' },
-  { icon: '📋', title: 'Preparación de pruebas', description: 'Entrenamiento específico para exámenes, selectividad, oposiciones y pruebas de acceso.' },
-  { icon: '🏠', title: 'Clases a domicilio', description: 'El profesor se desplaza al domicilio para mayor comodidad en un entorno familiar.' },
-  { icon: '🎒', title: 'Todos los niveles', description: 'Primaria, ESO, Bachillerato, universidad y adultos. Nunca es tarde para aprender.' },
+  { icon: 'groups', title: 'Grupos reducidos', description: 'Clases con pocos alumnos para garantizar la atención individualizada que cada estudiante necesita.' },
+  { icon: 'school', title: 'Profesores especializados', description: 'Equipo docente con formación específica en cada materia y en técnicas de apoyo al aprendizaje.' },
+  { icon: 'language', title: 'Clases de idiomas', description: 'Inglés, francés y otros idiomas con metodología comunicativa orientada a exámenes oficiales.' },
+  { icon: 'square_foot', title: 'Todas las materias', description: 'Desde matemáticas y lengua hasta ciencias sociales, física o química. Cubrimos todo el currículo.' },
+  { icon: 'psychology', title: 'Seguimiento psicopedagógico', description: 'Control continuo del proceso de aprendizaje para detectar dificultades y adaptar la metodología.' },
+  { icon: 'assignment', title: 'Preparación de pruebas', description: 'Entrenamiento específico para exámenes, selectividad, oposiciones y pruebas de acceso.' },
+  { icon: 'home', title: 'Clases a domicilio', description: 'El profesor se desplaza al domicilio para mayor comodidad en un entorno familiar.' },
+  { icon: 'backpack', title: 'Todos los niveles', description: 'Primaria, ESO, Bachillerato, universidad y adultos. Nunca es tarde para aprender.' },
 ];
 ---
 
@@ -84,7 +84,7 @@ const servicios = [
           {[
             { num: '+15', label: 'años de experiencia' },
             { num: '1', label: 'centro en Jerez' },
-            { num: '< 6', label: 'alumnos por grupo' },
+            { num: '- de 6', label: 'alumnos por grupo' },
             { num: '100%', label: 'seguimiento familiar' },
           ].map((stat, i) => (
             <div class="stat-card bg-white/20 backdrop-blur-sm rounded-2xl p-5 text-center
@@ -115,7 +115,7 @@ const servicios = [
                     px-6 py-3 rounded-full shadow-lg
                     hover:bg-burdeos hover:text-white hover:-translate-y-0.5
                     transition-all duration-200">
-            📞 Consulta sin compromiso
+            <span class="material-symbols-outlined text-base">call</span> Consulta sin compromiso
           </a>
         </div>
       </div>
@@ -147,7 +147,7 @@ const servicios = [
       <h2 class="font-display text-3xl font-black text-gris mb-4">¿Necesitas refuerzo escolar?</h2>
       <p class="text-gris-claro mb-8">Cuéntanos la situación de tu hijo y te proponemos el plan más adecuado.</p>
       <div class="flex flex-wrap justify-center gap-3">
-        <a href="tel:956062004" class="bg-burdeos text-white font-bold px-8 py-3 rounded-full hover:bg-burdeos/80 transition-all hover:-translate-y-0.5 hover:shadow-lg">📞 Llamar ahora</a>
+        <a href="tel:956062004" class="bg-burdeos text-white font-bold px-8 py-3 rounded-full hover:bg-burdeos/80 transition-all hover:-translate-y-0.5 hover:shadow-lg">Llamar ahora</a>
         <a href="/psicopedagogia" class="border-2 border-burdeos text-burdeos font-bold px-8 py-3 rounded-full hover:bg-burdeos hover:text-white transition-all">Ver Psicopedagogía</a>
       </div>
     </div>
