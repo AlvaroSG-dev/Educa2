@@ -1,0 +1,226 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ParallaxSection from '../components/ParallaxSection.astro';
+import HojasSVG from '../components/HojasSVG.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+---
+
+<Layout
+  title="Psicología"
+  description="Servicio de psicología infantil y juvenil en educa2 — Ansiedad, conducta, neuropsicología y bienestar emocional para niños y adolescentes en Jerez de la Frontera y Puerto Real."
+>
+
+  <!-- HERO -->
+  <ParallaxSection id="psico-hero" bgColor="#eaf4e0" parallaxIntensity={0.35} className="min-h-[55vh] flex items-center py-32 px-4">
+    <HojasSVG />
+    <div class="max-w-3xl mx-auto text-center relative z-10 pt-8">
+      <p class="inline-block bg-verde/20 text-verde-oscuro font-bold text-sm px-4 py-1.5 rounded-full mb-5">
+        Salud mental infantil y juvenil
+      </p>
+      <h1 class="font-display text-5xl md:text-6xl font-black text-gris mb-5 leading-tight">
+        Psicología <span class="text-verde">infantil y juvenil</span>
+      </h1>
+      <p class="text-gris-claro text-xl max-w-xl mx-auto leading-relaxed">
+        Acompañamos a niños y adolescentes en su bienestar emocional, ayudándoles a superar dificultades con un enfoque cercano, profesional y adaptado a cada etapa vital.
+      </p>
+    </div>
+  </ParallaxSection>
+
+  <!-- ESPECIALIDADES -->
+  <section class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="text-verde font-bold text-sm tracking-widest uppercase mb-2">Especialidades</p>
+        <h2 class="font-display text-4xl font-black text-gris mb-4">¿En qué podemos ayudar?</h2>
+        <p class="text-gris-claro max-w-xl mx-auto">
+          Trabajamos con niños, adolescentes y sus familias en una amplia variedad de áreas de la salud mental.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <ServiceCard
+          icon="🧠"
+          title="Neuropsicología"
+          description="Evaluación e intervención en el funcionamiento cerebral: memoria, atención, funciones ejecutivas y desarrollo cognitivo."
+          accent="verde"
+        />
+        <ServiceCard
+          icon="😰"
+          title="Ansiedad y miedos"
+          description="Tratamiento de fobias, ansiedad generalizada, ansiedad escolar y ataques de pánico en niños y adolescentes."
+          accent="verde"
+        />
+        <ServiceCard
+          icon="😔"
+          title="Estado de ánimo"
+          description="Intervención en tristeza persistente, baja autoestima, apatía y estados depresivos adaptados a cada edad."
+          accent="verde"
+        />
+        <ServiceCard
+          icon="🔥"
+          title="Problemas de conducta"
+          description="Orientación y tratamiento ante rabietas, agresividad, oposicionismo y dificultades de regulación emocional."
+          accent="verde"
+        />
+        <ServiceCard
+          icon="🏫"
+          title="Adaptación escolar"
+          description="Apoyo psicológico ante cambios de colegio, acoso escolar, rechazo o fracaso escolar con base emocional."
+          accent="verde"
+        />
+        <ServiceCard
+          icon="👨‍👩‍👧"
+          title="Orientación familiar"
+          description="Pautas y estrategias para que las familias acompañen el desarrollo emocional de sus hijos de forma saludable."
+          accent="verde"
+        />
+        <ServiceCard
+          icon="🤝"
+          title="Habilidades sociales"
+          description="Entrenamiento en comunicación, resolución de conflictos y relaciones entre iguales para niños y jóvenes."
+          accent="verde"
+        />
+        <ServiceCard
+          icon="🍽️"
+          title="Conducta alimentaria"
+          description="Detección e intervención temprana en dificultades relacionadas con la alimentación y la imagen corporal."
+          accent="verde"
+        />
+        <ServiceCard
+          icon="💤"
+          title="Problemas de sueño"
+          description="Evaluación y tratamiento de insomnio, pesadillas, terrores nocturnos y resistencia al sueño en la infancia."
+          accent="verde"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- NEUROPSICOLOGÍA — Parallax destacado -->
+  <ParallaxSection id="psico-neuro" bgColor="#e8f5d0" parallaxIntensity={0.2} className="py-20 px-4">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-verde font-bold text-sm tracking-widest uppercase mb-3">Área destacada</p>
+          <h2 class="font-display text-4xl font-black text-gris mb-5 leading-tight">
+            Neuropsicología <span class="text-verde">infantil</span>
+          </h2>
+          <p class="text-gris-claro leading-relaxed mb-4">
+            La neuropsicología estudia la relación entre el cerebro y la conducta. En educa2 realizamos evaluaciones neuropsicológicas completas para entender cómo funciona la mente de cada niño: su memoria, atención, lenguaje, funciones ejecutivas y capacidad de aprendizaje.
+          </p>
+          <p class="text-gris-claro leading-relaxed">
+            A partir de los resultados diseñamos un plan de intervención personalizado y coordinamos con el colegio y la familia para garantizar el mejor acompañamiento posible.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { icon: '🎯', label: 'Evaluación de atención' },
+            { icon: '💾', label: 'Memoria y aprendizaje' },
+            { icon: '⚙️', label: 'Funciones ejecutivas' },
+            { icon: '📊', label: 'Informe neuropsicológico' },
+          ].map(item => (
+            <div class="neuro-card bg-white rounded-2xl p-5 border border-verde/20 text-center shadow-sm
+                        opacity-0 transition-all duration-700 hover:-translate-y-1 hover:shadow-md">
+              <div class="text-3xl mb-2">{item.icon}</div>
+              <p class="font-semibold text-gris text-sm">{item.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </ParallaxSection>
+
+  <!-- PROCESO -->
+  <section class="py-20 px-4 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-4xl font-black text-gris mb-4">Cómo trabajamos</h2>
+        <p class="text-gris-claro max-w-xl mx-auto">Un proceso claro, humano y centrado en el bienestar del niño y su familia.</p>
+      </div>
+      <div class="grid md:grid-cols-4 gap-6">
+        {[
+          { num: '01', icon: '💬', title: 'Primera consulta', desc: 'Escuchamos a la familia y recogemos información sobre la situación del niño o adolescente.' },
+          { num: '02', icon: '🔍', title: 'Evaluación', desc: 'Aplicamos pruebas adaptadas a la edad para obtener una visión completa del estado emocional y cognitivo.' },
+          { num: '03', icon: '📋', title: 'Plan terapéutico', desc: 'Diseñamos un plan personalizado con objetivos concretos y técnicas basadas en la evidencia.' },
+          { num: '04', icon: '📈', title: 'Seguimiento', desc: 'Revisamos el progreso periódicamente e informamos a la familia con total transparencia.' },
+        ].map(step => (
+          <div class="service-card text-center bg-[#f8fdf2] rounded-2xl p-5 border border-verde/20 opacity-0 translate-y-6">
+            <div class="font-display text-4xl font-black mb-1 text-verde opacity-30">{step.num}</div>
+            <div class="text-3xl mb-3">{step.icon}</div>
+            <h3 class="font-bold text-gris mb-2">{step.title}</h3>
+            <p class="text-gris-claro text-sm leading-relaxed">{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 px-4 bg-white text-center">
+    <div class="max-w-xl mx-auto">
+      <h2 class="font-display text-3xl font-black text-gris mb-4">¿Crees que tu hijo necesita apoyo?</h2>
+      <p class="text-gris-claro mb-8">
+        Una primera consulta no compromete a nada y puede marcar el inicio de un gran cambio.
+        Estamos aquí para acompañarte.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="tel:956062004"
+           class="bg-verde text-white font-bold px-8 py-3 rounded-full
+                  hover:bg-verde-oscuro transition-all duration-200
+                  hover:-translate-y-0.5 hover:shadow-lg inline-flex items-center gap-2">
+          📞 Pedir cita
+        </a>
+        <a href="/psicopedagogia"
+           class="border-2 border-verde text-verde font-bold px-8 py-3 rounded-full
+                  hover:bg-verde hover:text-white transition-all duration-200">
+          Ver Psicopedagogía
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  function initReveal() {
+    // Tarjetas del proceso
+    const stepCards = document.querySelectorAll<HTMLElement>('.service-card');
+    const stepObs = new IntersectionObserver(
+      entries => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            setTimeout(() => {
+              el.style.opacity = '1';
+              el.style.transform = 'translateY(0)';
+            }, i * 120);
+            stepObs.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    stepCards.forEach(c => {
+      c.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      stepObs.observe(c);
+    });
+
+    // Tarjetas de neuropsicología
+    const neuroCards = document.querySelectorAll<HTMLElement>('.neuro-card');
+    const neuroObs = new IntersectionObserver(
+      entries => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            setTimeout(() => { el.style.opacity = '1'; }, i * 120);
+            neuroObs.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    neuroCards.forEach(c => neuroObs.observe(c));
+  }
+
+  initReveal();
+  document.addEventListener('astro:page-load', initReveal);
+</script>
