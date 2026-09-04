@@ -1,41 +1,46 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import ParallaxSection from "../components/ParallaxSection.astro";
 import HojasSVG from "../components/HojasSVG.astro";
 import ServiceCard from "../components/ServiceCard.astro";
+import PaintSplash from "../components/PaintSplash.astro";
+
+const IMGS = {
+  hero: 'https://images.unsplash.com/photo-1604881991720-f91add269bed?w=1600&q=85&auto=format&fit=crop',
+  neuro: 'https://images.unsplash.com/photo-1758273241078-8eec353836be?w=1600&q=85&auto=format&fit=crop',
+};
 ---
 
 <Layout
   title="Psicología"
   description="Servicio de psicología en educa2 — Ansiedad, conducta, neuropsicología y bienestar emocional para niños, adolescentes y adultos en Jerez de la Frontera y Puerto Real."
 >
-  <!-- HERO -->
-  <ParallaxSection
-    id="psico-hero"
-    bgColor="#eaf4e0"
-    parallaxIntensity={0.35}
-    className="min-h-[55vh] flex items-center justify-center py-32 px-4"
-  >
+  <!-- HERO con imagen difuminada + parallax -->
+  <section class="relative min-h-[65vh] flex items-center justify-center overflow-hidden pt-20">
+    <div id="psicologia-hero-bg" class="absolute inset-0 will-change-transform"
+      style={`background-image:url('${IMGS.hero}');background-size:cover;background-position:center;filter:blur(3px) brightness(0.3);transform:scale(1.06);`}
+      aria-hidden="true"
+    />
+    <div class="absolute inset-0 opacity-60"
+      style="background:linear-gradient(135deg,#16290c99 0%,#0e1f0a88 100%);"
+      aria-hidden="true"
+    />
     <HojasSVG />
-    <div class="max-w-3xl mx-auto text-center relative z-10">
-      <p
-        class="inline-block bg-verde/20 text-verde-oscuro font-bold text-sm px-4 py-1.5 rounded-full mb-5"
-      >
+    <div class="relative z-10 text-center px-4 max-w-3xl mx-auto">
+      <p class="inline-block bg-white/15 text-white font-bold text-sm px-4 py-1.5 rounded-full mb-5">
         Salud mental para todos
       </p>
-      <h1
-        class="font-display text-6xl md:text-8xl font-black text-gris mb-5 leading-tight"
-      >
-        Psicología
-        <span class="text-verde block text-5xl md:text-8xl">para todos</span>
+      <h1 class="font-display text-6xl md:text-8xl font-black text-white mb-5 leading-tight drop-shadow-xl">
+        Psicología <span style="color:#c5e1a5;">para todos</span>
       </h1>
-      <p class="text-gris-claro text-xl max-w-xl mx-auto leading-relaxed">
+      <p class="text-white/80 text-xl max-w-xl mx-auto leading-relaxed">
         Acompañamos a niños, adolescentes y adultos en su bienestar emocional,
         ayudándoles a superar dificultades con un enfoque cercano, profesional y
         adaptado a cada etapa vital.
       </p>
     </div>
-  </ParallaxSection>
+  </section>
+
+  <PaintSplash color="#ffffff" flip={true} />
 
   <!-- ESPECIALIDADES -->
   <section class="py-20 px-4 bg-white">
@@ -111,34 +116,37 @@ import ServiceCard from "../components/ServiceCard.astro";
     </div>
   </section>
 
-  <!-- NEUROPSICOLOGÍA — Parallax destacado -->
-  <ParallaxSection
-    id="psico-neuro"
-    bgColor="#e8f5d0"
-    parallaxIntensity={0.2}
-    className="py-20 px-4"
-  >
-    <div class="max-w-5xl mx-auto">
+  <!-- NEUROPSICOLOGÍA — imagen + verde oscuro -->
+  <section class="relative overflow-hidden py-20 px-4" style="background-color:#0a1a05;">
+    <div id="neuro-bg" class="absolute inset-0 will-change-transform"
+      style={`background-image:url('${IMGS.neuro}');background-size:cover;background-position:center;filter:blur(2px) brightness(0.55);transform:scale(1.15);`}
+      aria-hidden="true"
+    />
+    <div class="absolute inset-0 opacity-70"
+      style="background:linear-gradient(135deg,#122408 0%,#0a1a05 100%);"
+      aria-hidden="true"
+    />
+    <div class="max-w-5xl mx-auto relative z-10">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div>
           <p
-            class="text-verde font-bold text-sm tracking-widest uppercase mb-3"
+            class="text-verde-claro font-bold text-sm tracking-widest uppercase mb-3"
           >
             Área destacada
           </p>
           <h2
-            class="font-display text-4xl font-black text-gris mb-5 leading-tight"
+            class="font-display text-4xl font-black text-white mb-5 leading-tight"
           >
-            Neuropsicología <span class="text-verde">clínica</span>
+            Neuropsicología <span style="color:#c5e1a5;">clínica</span>
           </h2>
-          <p class="text-gris-claro leading-relaxed mb-4">
+          <p class="text-white/80 leading-relaxed mb-4">
             La neuropsicología estudia la relación entre el cerebro y la
             conducta. En educa2 realizamos evaluaciones neuropsicológicas
             completas para entender cómo funciona la mente de cada persona: su
             memoria, atención, lenguaje, funciones ejecutivas y capacidad de
             aprendizaje, tanto en la infancia como en la etapa adulta.
           </p>
-          <p class="text-gris-claro leading-relaxed">
+          <p class="text-white/80 leading-relaxed">
             A partir de los resultados diseñamos un plan de intervención
             personalizado y coordinamos con el entorno familiar, escolar o
             laboral para garantizar el mejor acompañamiento posible.
@@ -168,7 +176,7 @@ import ServiceCard from "../components/ServiceCard.astro";
         </div>
       </div>
     </div>
-  </ParallaxSection>
+  </section>
 
   <!-- PROCESO -->
   <section class="py-20 px-4 bg-white">
@@ -252,6 +260,30 @@ import ServiceCard from "../components/ServiceCard.astro";
   </section>
 
 <script>
+  // Parallax hero
+  const bg = document.getElementById('psicologia-hero-bg');
+  if (bg) {
+    window.addEventListener('scroll', () => {
+      requestAnimationFrame(() => {
+        bg.style.transform = `scale(1.06) translateY(${window.scrollY * 0.25}px)`;
+      });
+    }, { passive: true });
+  }
+
+  // Parallax neuropsicología
+  const neuroBg = document.getElementById('neuro-bg');
+  if (neuroBg) {
+    const maxOffset = 40; // px — debe quedarse dentro del margen que da scale(1.15)
+    window.addEventListener('scroll', () => {
+      requestAnimationFrame(() => {
+        const rect = neuroBg.parentElement!.getBoundingClientRect();
+        const raw = rect.top * 0.1;
+        const offset = Math.max(-maxOffset, Math.min(maxOffset, raw));
+        neuroBg.style.transform = `scale(1.15) translateY(${offset}px)`;
+      });
+    }, { passive: true });
+  }
+
   function initReveal() {
     const stepCards = document.querySelectorAll<HTMLElement>(".service-card");
     const stepObs = new IntersectionObserver(
