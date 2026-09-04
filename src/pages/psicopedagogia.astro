@@ -1,8 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ParallaxSection from '../components/ParallaxSection.astro';
+import ScrollReveal from '../components/ScrollReveal.astro';
 import HojasSVG from '../components/HojasSVG.astro';
 import ServiceCard from '../components/ServiceCard.astro';
+import PaintSplash from '../components/PaintSplash.astro';
+
+const IMGS = {
+  hero: 'https://images.unsplash.com/photo-1588072432836-e10032774350?w=1600&q=85&auto=format&fit=crop',
+};
 ---
 
 <Layout
@@ -11,41 +17,58 @@ import ServiceCard from '../components/ServiceCard.astro';
 >
 
   <!-- HERO -->
-  <ParallaxSection id="psico-hero" bgColor="#eaf4e0" parallaxIntensity={0.35} className="min-h-[55vh] flex items-center justify-center py-32 px-4">
+  <section class="relative min-h-[65vh] flex items-center justify-center overflow-hidden pt-20">
+    <div
+      id="psico-hero-bg"
+      class="absolute inset-0 will-change-transform"
+      style={`background-image:url('${IMGS.hero}');background-size:cover;background-position:center;filter:blur(3px) brightness(0.3);transform:scale(1.06);`}
+      aria-hidden="true"
+    />
+    <div
+      class="absolute inset-0 opacity-60"
+      style="background:linear-gradient(135deg,#9e3f3f99 0%,#7a1a1a88 100%);"
+      aria-hidden="true"
+    />
     <HojasSVG />
-    <div class="max-w-3xl mx-auto text-center relative z-10">
-      <p class="inline-block bg-verde/20 text-verde-oscuro font-bold text-sm px-4 py-1.5 rounded-full mb-5">
-        Intervención educativa
+    <div class="relative z-10 text-center px-4 max-w-3xl mx-auto">
+      <p class="inline-block bg-white/15 text-white font-bold text-sm px-4 py-1.5 rounded-full mb-5">
+        Área de Psicopedagogía · educa2 Jerez
       </p>
-      <h1 class="font-display text-6xl md:text-8xl font-black text-gris mb-5 leading-tight">
-        Atención <span class="text-verde">Psicopedagógica</span>
+      <h1 class="font-display text-6xl md:text-8xl font-black text-white mb-5 leading-tight drop-shadow-xl">
+        Aprender <span style="color:#ffb8b8;">sin límites</span>
       </h1>
-      <p class="text-gris-claro text-xl max-w-xl mx-auto leading-relaxed">
-        Detectamos, evaluamos e intervenimos en las dificultades de aprendizaje para que cada niño pueda desarrollar todo su potencial.
+      <p class="text-white/80 text-xl max-w-xl mx-auto leading-relaxed">
+        Detectamos, evaluamos e intervenimos en las dificultades de aprendizaje
+        para que cada niño pueda desarrollar todo su potencial.
       </p>
-    </div>
-  </ParallaxSection>
-
-  <!-- SERVICIOS -->
-  <section class="py-20 px-4 bg-white">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-14">
-        <p class="text-verde font-bold text-sm tracking-widest uppercase mb-2">Áreas de trabajo</p>
-        <h2 class="font-display text-4xl font-black text-gris mb-4">¿Qué abarcamos?</h2>
-      </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <ServiceCard icon="extension" title="Dificultades de aprendizaje" description="Dislexia, discalculia, disgrafía y otros trastornos específicos del aprendizaje." accent="verde" />
-        <ServiceCard icon="bolt" title="TDAH" description="Evaluación y orientación para niños con déficit de atención e hiperactividad." accent="verde" />
-        <ServiceCard icon="stars" title="Altas capacidades" description="Detección e intervención en niños con capacidades superiores a la media." accent="verde" />
-        <ServiceCard icon="assessment" title="Evaluación psicológica" description="Informe psicopedagógico completo con orientaciones para familia y colegio." accent="verde" />
-        <ServiceCard icon="track_changes" title="Orientación escolar" description="Asesoramiento sobre itinerarios académicos y decisiones educativas." accent="verde" />
-        <ServiceCard icon="family_restroom" title="Orientación familiar" description="Pautas y herramientas para que las familias acompañen mejor a sus hijos en casa." accent="verde" />
-      </div>
     </div>
   </section>
 
-  <!-- PROCESO — Parallax -->
-  <ParallaxSection id="psico-proceso" bgColor="#eaf4e0" parallaxIntensity={0.2} className="py-20 px-4">
+  <PaintSplash color="#ffffff" flip={true} />
+
+  <!-- SERVICIOS -->
+  <ScrollReveal bgColor="#ffffff" direction="up" className="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="font-bold text-sm tracking-widest uppercase mb-2" style="color:#9e3f3f;">Áreas de trabajo</p>
+        <h2 class="font-display text-4xl font-black text-gris mb-4">¿Qué abarcamos?</h2>
+        <p class="text-gris-claro max-w-xl mx-auto">Cuatro grandes áreas, siempre con una valoración inicial individualizada para diseñar el plan más adecuado.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <ServiceCard icon="extension" title="Dificultades de aprendizaje" description="Dislexia, discalculia, disgrafía y otros trastornos específicos del aprendizaje." accent="burdeos" />
+        <ServiceCard icon="bolt" title="TDAH" description="Evaluación y orientación para niños con déficit de atención e hiperactividad." accent="burdeos" />
+        <ServiceCard icon="stars" title="Altas capacidades" description="Detección e intervención en niños con capacidades superiores a la media." accent="burdeos" />
+        <ServiceCard icon="assessment" title="Evaluación psicopedagógica" description="Informe completo con orientaciones para familia y colegio." accent="burdeos" />
+        <ServiceCard icon="track_changes" title="Orientación escolar" description="Asesoramiento sobre itinerarios académicos y decisiones educativas." accent="burdeos" />
+        <ServiceCard icon="family_restroom" title="Orientación familiar" description="Pautas y herramientas para que las familias acompañen mejor a sus hijos en casa." accent="burdeos" />
+      </div>
+    </div>
+  </ScrollReveal>
+
+  <PaintSplash color="#fff5f5" />
+
+  <!-- PROCESO -->
+  <ScrollReveal bgColor="#fff5f5" direction="up" className="py-20 px-4">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-12">
         <h2 class="font-display text-4xl font-black text-gris mb-4">Cómo trabajamos</h2>
@@ -53,15 +76,18 @@ import ServiceCard from '../components/ServiceCard.astro';
       </div>
       <div class="grid md:grid-cols-4 gap-6">
         {[
-          { num: '01', icon: 'quiz', title: 'Primera consulta', desc: 'Recogemos información sobre la situación del alumno y las preocupaciones de la familia.' },
-          { num: '02', icon: 'fact_check', title: 'Evaluación', desc: 'Aplicamos pruebas estandarizadas y observación directa para obtener un diagnóstico preciso.' },
-          { num: '03', icon: 'map', title: 'Plan de intervención', desc: 'Diseñamos un plan personalizado con objetivos claros y medibles.' },
-          { num: '04', icon: 'trending_up', title: 'Seguimiento', desc: 'Revisamos el progreso periódicamente e informamos a la familia con transparencia.' },
-        ].map(step => (
-          <div class="service-card text-center bg-white/80 rounded-2xl p-5 border border-verde/20 opacity-0 translate-y-6">
-            <div class="font-display text-4xl font-black mb-1 text-verde opacity-30">{step.num}</div>
+          { num: '01', icon: 'quiz',        title: 'Primera consulta',    desc: 'Recogemos información sobre la situación del alumno y las preocupaciones de la familia.' },
+          { num: '02', icon: 'fact_check',  title: 'Evaluación',          desc: 'Aplicamos pruebas estandarizadas y observación directa para obtener un diagnóstico preciso.' },
+          { num: '03', icon: 'map',         title: 'Plan de intervención',desc: 'Diseñamos un plan personalizado con objetivos claros y medibles.' },
+          { num: '04', icon: 'trending_up', title: 'Seguimiento',         desc: 'Revisamos el progreso periódicamente e informamos a la familia con transparencia.' },
+        ].map((step, i) => (
+          <div
+            class="proceso-card text-center bg-white rounded-2xl p-5 border opacity-0 translate-y-6"
+            style="border-color:rgba(158,63,63,0.2);"
+          >
+            <div class="font-display text-4xl font-black mb-1 opacity-30" style="color:#9e3f3f;">{step.num}</div>
             <div class="text-3xl mb-3">
-              <span class="material-symbols-outlined text-4xl text-verde" aria-hidden="true">
+              <span class="material-symbols-outlined text-4xl" style="color:#9e3f3f;" aria-hidden="true">
                 {step.icon}
               </span>
             </div>
@@ -71,22 +97,65 @@ import ServiceCard from '../components/ServiceCard.astro';
         ))}
       </div>
     </div>
-  </ParallaxSection>
+  </ScrollReveal>
+
+  <PaintSplash color="#9e3f3f" flip={true} />
 
   <!-- CTA -->
-  <section class="py-16 px-4 bg-white text-center">
-    <div class="max-w-xl mx-auto">
+  <ScrollReveal direction="up" bgColor="#fff5f5" className="py-16 px-4">
+    <div class="max-w-xl mx-auto text-center">
       <h2 class="font-display text-3xl font-black text-gris mb-4">¿Tienes dudas sobre tu hijo?</h2>
       <p class="text-gris-claro mb-8">Una consulta inicial no compromete a nada y puede marcar el inicio de un gran cambio.</p>
       <div class="flex flex-wrap justify-center gap-3">
-        <a href="tel:956062004" class="bg-verde text-white font-bold px-8 py-3 rounded-full hover:bg-verde-oscuro transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg inline-flex items-center gap-2">
-          <span class="material-symbols-outlined" aria-hidden="true">call</span> Pedir cita
+        <a href="tel:956062004" class="text-white font-bold px-8 py-3 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg inline-flex items-center gap-2" style="background-color:#9e3f3f;">
+          <span class="material-symbols-outlined text-base" aria-hidden="true">call</span>
+          Pedir cita
         </a>
-        <a href="/logopedia" class="border-2 border-verde text-verde font-bold px-8 py-3 rounded-full hover:bg-verde hover:text-white transition-all duration-200">
+        <a href="/logopedia" class="border-2 font-bold px-8 py-3 rounded-full transition-all duration-200 inline-flex items-center gap-2" style="border-color:#9e3f3f;color:#9e3f3f;" onmouseover="this.style.backgroundColor='#9e3f3f';this.style.color='white';" onmouseout="this.style.backgroundColor='transparent';this.style.color='#9e3f3f';">
           Ver Logopedia
+          <span class="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
         </a>
       </div>
     </div>
-  </section>
+  </ScrollReveal>
 
 </Layout>
+
+<script>
+  // Parallax hero
+  const bg = document.getElementById('psico-hero-bg');
+  if (bg) {
+    window.addEventListener('scroll', () => {
+      requestAnimationFrame(() => {
+        bg.style.transform = `scale(1.06) translateY(${window.scrollY * 0.25}px)`;
+      });
+    }, { passive: true });
+  }
+
+  // Reveal tarjetas proceso
+  function initReveal() {
+    const cards = document.querySelectorAll<HTMLElement>('.proceso-card');
+    const obs = new IntersectionObserver(
+      entries => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            setTimeout(() => {
+              el.style.opacity = '1';
+              el.style.transform = 'translateY(0)';
+            }, i * 120);
+            obs.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    cards.forEach(c => {
+      c.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      obs.observe(c);
+    });
+  }
+
+  initReveal();
+  document.addEventListener('astro:page-load', initReveal);
+</script>
